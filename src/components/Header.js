@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 
 function Header() {
@@ -17,7 +18,8 @@ function Header() {
         // <!-- Top header  -->
         // <!-- ============================================================== -->
         // <!-- Start Navigation --> */}
-        <div className="header header-transparent dark-text">
+        {/* <div className="header header-transparent dark-text"> */}
+        <div className="header dark-text">
             <div className="container">
                 <nav id="navigation" className="navigation navigation-landscape">
                     <div className="nav-header">
@@ -70,7 +72,8 @@ function Header() {
                             
                         <li><a href="#">Shop</a>
                                 <ul className="nav-dropdown nav-submenu">
-                                    <li><a href="">Account Dashboard</a>
+                                    <li><Link to="/shop">View All</Link></li>
+                                    <li><a href="">Men&nbsp;&nbsp;&nbsp;&nbsp;<i class="lni lni-arrow-right"></i></a>
                                         <ul className="nav-dropdown nav-submenu">
                                             <li><a href="my-orders.html">My Order</a></li>
                                             <li><a href="wishlist.html">Wishlist</a></li>
@@ -79,14 +82,13 @@ function Header() {
                                             <li><a href="payment-methode.html">Payment Methode</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="">Support</a>
+                                    <li><a href="">Women&nbsp;&nbsp;&nbsp;&nbsp;<i class="lni lni-arrow-right"></i></a>
                                         <ul className="nav-dropdown nav-submenu">
                                             <li><a href="shoping-cart.html">Shopping Cart</a></li>
                                             <li><a href="checkout.html">Checkout</a></li>
                                             <li><a href="complete-order.html">Order Complete</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="shop-style-1.html">Shop Style 01</a></li>
                                     <li><a href="shop-style-2.html">Shop Style 02</a></li>
                                     <li><a href="shop-style-3.html">Shop Style 03</a></li>
                                     <li><a href="shop-style-4.html">Shop Style 04</a></li>

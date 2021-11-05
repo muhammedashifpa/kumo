@@ -1,9 +1,9 @@
 import React from 'react'
-import ProductViewModal from './modalComponents/ProductViewModal'
-import LogInModal from './modalComponents/LogInModal'
-import Search from './modalComponents/Search'
-import Wishlist from './modalComponents/Wishlist'
-import SideCart from './modalComponents/SideCart'
+import ProductViewModal from './randomomponents/ProductViewModal'
+import LogInModal from './randomomponents/LogInModal'
+import Search from './randomomponents/Search'
+import Wishlist from './randomomponents/Wishlist'
+import SideCart from './randomomponents/SideCart'
 
 
 function Modals() {
