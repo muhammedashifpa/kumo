@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 
 
@@ -12,6 +12,10 @@ function Header() {
     function openWishlist() {
         document.getElementById("Wishlist").style.display = "block";
     }
+
+   
+
+
     return (
         <div>
         {/* // <!-- ============================================================== -->
@@ -19,7 +23,7 @@ function Header() {
         // <!-- ============================================================== -->
         // <!-- Start Navigation --> */}
         {/* <div className="header header-transparent dark-text"> */}
-        <div className="header dark-text">
+        <div className="header header-transparent dark-text header-fixed mobile-fixed">
             <div className="container">
                 <nav id="navigation" className="navigation navigation-landscape">
                     <div className="nav-header">
@@ -52,37 +56,30 @@ function Header() {
                             </ul>
                         </div>
                     </div>
-                    <div className="nav-menus-wrapper" style={{transitionProperty: "none"}}>
+                    <div className="nav-menus-wrapper" id="mob-menu" style={{transitionProperty: "none"}}>
                         <ul className="nav-menu">
-                        
-                            <li><a href="#">Home</a>
-                                <ul className="nav-dropdown nav-submenu">
-                                    <li><a href="index.html">Home 1</a></li>
-                                    <li><a href="home-2.html">Home 2</a></li>
-                                    <li><a href="home-3.html">Home 3</a></li>
-                                    <li><a href="home-4.html">Home 4</a></li>
-                                    <li><a href="home-5.html">Home 5</a></li>
-                                    <li><a href="home-6.html">Home 6</a></li>
-                                    <li><a href="home-7.html">Home 7</a></li>
-                                    <li><a href="home-8.html">Home 8</a></li>
-                                    <li><a href="home-9.html">Home 9</a></li>
-                                    <li><a href="home-10.html">Home 10</a></li>
-                                </ul>
-                            </li>
-                            
-                        <li><a href="#">Shop</a>
-                                <ul className="nav-dropdown nav-submenu">
+                        <li><Link to="/" >Home</Link></li>
+                        <li><a href="">Shop</a>
+                                <ul className="nav-dropdown nav-submenu" id="level-2">
                                     <li><Link to="/shop">View All</Link></li>
-                                    <li><a href="">Men&nbsp;&nbsp;&nbsp;&nbsp;<i class="lni lni-arrow-right"></i></a>
+                                    <li><Link to="/">Men&nbsp;&nbsp;&nbsp;&nbsp;<i class="lni lni-arrow-right"></i></Link>
                                         <ul className="nav-dropdown nav-submenu">
                                             <li><a href="my-orders.html">My Order</a></li>
                                             <li><a href="wishlist.html">Wishlist</a></li>
                                             <li><a href="profile-info.html">Profile Info</a></li>
                                             <li><a href="addresses.html">Addresses</a></li>
                                             <li><a href="payment-methode.html">Payment Methode</a></li>
+                                            <li><Link to="/shop">View All</Link></li>
                                         </ul>
                                     </li>
                                     <li><a href="">Women&nbsp;&nbsp;&nbsp;&nbsp;<i class="lni lni-arrow-right"></i></a>
+                                        <ul className="nav-dropdown nav-submenu">
+                                            <li><a href="shoping-cart.html">Shopping Cart</a></li>
+                                            <li><a href="checkout.html">Checkout</a></li>
+                                            <li><a href="complete-order.html">Order Complete</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">Kids&nbsp;&nbsp;&nbsp;&nbsp;<i class="lni lni-arrow-right"></i></a>
                                         <ul className="nav-dropdown nav-submenu">
                                             <li><a href="shoping-cart.html">Shopping Cart</a></li>
                                             <li><a href="checkout.html">Checkout</a></li>

@@ -14,6 +14,10 @@ import Wishlist from './myAccountComponents/WishList'
 import ProfileInfo from "./myAccountComponents/ProfileInfo";
 import Address from './myAccountComponents/Address'
 import AddAddress from "./myAccountComponents/AddAddress"
+import PaymentMethods from"./myAccountComponents/PaymentMethods"
+import PaymentAddCard from './myAccountComponents/PaymentAddCard'
+import Login from './myAccountComponents/Login'
+import CreateAccount from './myAccountComponents/CreateAccount'
 
 
 function MyAccount() {
@@ -24,12 +28,15 @@ function MyAccount() {
 				<div class="container">
 					<div class="row justify-content-center justify-content-between">
                         <ProfileDashbord />
-                            {/* <MyOrder /> */}
-                            {/* <Wishlist /> */}
-                            {/* <ProfileInfo /> */}
-                            {/* <Address /> */}
-                            <AddAddress />
-
+                        <MyOrder />
+                        {/* <Wishlist /> */}
+                        {/* <ProfileInfo /> */}
+                        {/* <Address /> */}
+                        {/* <AddAddress /> */}
+                        {/* <PaymentMethods /> */}
+                        {/* <PaymentAddCard /> */}
+                        {/* <Login /> */}
+                        {/* <CreateAccount /> */}
                     </div>
 				</div>
 			</section>            

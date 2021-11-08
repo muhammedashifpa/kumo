@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 
 function Hero() {
+	const [count, setCount] = useState(0);
     return (
         <div>
             		{/* <!-- ============================ Hero Banner  Start================================== --> */}
 			<div className="home-slider margin-bottom-0">
 
 				{/* <!-- Slide --> */}
-				<div data-background-image="assets/img/banner-2.png" className="item">
+				<div data-background-image="assets/img/banner-2.png" className="item ">
 					<div className="container">
 						<div className="row">
 							<div className="col-md-12">
@@ -21,7 +23,7 @@ function Hero() {
 											<span className="trending">There's nothing like trend</span>
 										</div>
 
-										<a href="#" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></a>
+										<a href="#" className="btn stretched-link borders" onClick={() => setCount(count + 1)}>Shop Now<i className="lni lni-arrow-right ml-2"></i></a>
 									</div>
 									{/* <!-- Slide Title / End --> */}
 
@@ -57,7 +59,7 @@ function Hero() {
 				</div>
 
 				{/* <!-- Slide --> */}
-				<div data-background-image="assets/img/banner-3.png" className="item">
+				<div data-background-image="assets/img/banner-3.png" className="item ">
 					<div className="container">
 						<div className="row">
 							<div className="col-md-12">
@@ -84,6 +86,8 @@ function Hero() {
 			{/* <!-- ============================ Hero Banner End ================================== --> */}
 			
         </div>
+
+
     )
 }
 

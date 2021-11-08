@@ -5,12 +5,13 @@ import ProductsLists from './homecomponents/ProductsLists'
 import CustomerReview from './homecomponents/CustomerReview'
 import HomeBlog from './homecomponents/HomeBlog'
 import HomeInstagram from './homecomponents/HomeInstagram'
+import Slicker from './homecomponents/Slicker'
 
 
 function Home() {
     return (
         <div>
-            <Hero/>
+            <Slicker />
             <CategoryStyle />
             <ProductsLists />
             <CustomerReview />

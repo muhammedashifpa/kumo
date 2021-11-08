@@ -19,12 +19,14 @@ import Checkout from "./components/checkout/Checkout";
 import CompleateOrder from './components/compleateOrder/CompleateOrder';
 import PageNotFound404 from './components/404/PageNotFound404'
 import MyAccount from './components/myAccount/MyAccount'
+import DummyHeader from './components/randomomponents/DummyHeader'
 
 function App() {
   return (
-      <div className="App">
         <Router>
+      <div className="App">
           <Header/>
+          <DummyHeader/>
           <Routes>
             <Route path="*" element={<PageNotFound404 />} />
             <Route path="/" element={<Home />} />
@@ -37,8 +39,8 @@ function App() {
           </Routes>
           <Footer/>
           <Modals />
-        </Router>
       </div>
+        </Router>
   );
 }
 

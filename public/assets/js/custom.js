@@ -44,7 +44,7 @@ $(function() {
 			u.settings = {};
 			var t = (n(t), t);
 			n(t).find(".nav-menus-wrapper").prepend("<span class='nav-menus-wrapper-close-button'>✕</span>"), n(t).find(".nav-search").length > 0 && n(t).find(".nav-search").find("form").prepend("<span class='nav-search-close-button'>✕</span>"), u.init = function() {
-				u.settings = n.extend({}, o, s), "right" == u.settings.offCanvasSide && n(t).find(".nav-menus-wrapper").addClass("nav-menus-wrapper-right"), u.settings.hidden && (n(t).addClass("navigation-hidden"), u.settings.mobileBreakpoint = 99999), v(), u.settings.fixed && n(t).addClass("navigation-fixed"), n(t).find(".nav-toggle").on("click touchstart", function(n) {
+				u.settings = n.extend({}, o, s), "right" == u.settings.offCanvasSide && n(t).find(".nav-menus-wrapper").addClass("nav-menus-wrapper-right"), u.settings.hidden && (n(t).addClass("navigation-hidden"), u.settings.mobileBreakpoint = 99999), v(), u.settings.fixed && n(t).addClass("navigation-fixed"), n(t).find(".nav-toggle").on("click", function(n) {
 					n.stopPropagation(), n.preventDefault(), u.showOffcanvas(), s !== a && u.callback("onShowOffCanvas")
 				}), n(t).find(".nav-menus-wrapper-close-button").on("click touchstart", function() {
 					u.hideOffcanvas(), s !== a && u.callback("onHideOffCanvas")
@@ -54,8 +54,28 @@ $(function() {
 					u.toggleSearch()
 				}), n(t).find(".megamenu-tabs").length > 0 && y(), n(e).resize(function() {
 					m(), C()
-				}), m(), s !== a && u.callback("onInit")
-			};
+				}), m(), s !== a && u.callback("onInit"),
+				 $("#mob-menu").on("click touchstart", function() {
+					console.log("click1")
+					u.hideOffcanvas(), s !== a && u.callback("onHideOffCanvas")
+					console.log("clicked")
+				})
+				
+				
+				
+
+				//my functions
+				// n(t).find(".close-while-click").on("click touchstart", function() {
+				// 	u.hideOffcanvas(), s !== a && u.callback("onHideOffCanvas")
+				// })
+				// ,n(t).find(".close-while-click").on("click touchstart", function() {
+				// 	document.getElementById("level-2").style.display = "none",console.log("close request")
+
+				// })
+
+
+
+			}
 			var v = function() {
 				n(t).find("li").each(function() {
 					n(this).children(".nav-dropdown,.megamenu-panel").length > 0 && (n(this).children(".nav-dropdown,.megamenu-panel").addClass("nav-submenu"), u.settings.submenuIndicator && n(this).children("a").append("<span class='submenu-indicator'><span class='submenu-indicator-chevron'></span></span>"))
@@ -214,10 +234,12 @@ $(function() {
 	$(window).on('scroll', function() {    
 		var scroll = $(window).scrollTop();
 
-		if (scroll >= 50) {
+		if (scroll >= 100) {
 			$(".header").addClass("header-fixed");
+			console.log('fixed')
 		} else {
 			$(".header").removeClass("header-fixed");
+			console.log('fixed')
 		}
 	});
 
@@ -347,3 +369,18 @@ $(function() {
 	inlineCSS();
 	
 });
+
+$(document).ready(function(){
+	// Show hide popover
+	$(".nav-dropdown").click(function(){
+		$(this).find(".nav-dropdown").slideUp("fast"),
+		$(".nav-submenu").slideUp("fast")
+	});
+});
+
+// $(document).ready(function(){
+// 	$("#mob-menu").click(function(){
+// 		console.log('click');
+// 		$("#mob-menu").removeClass("nav-menus-wrapper-open")
+// 	});
+// });
