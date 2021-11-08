@@ -3024,10 +3024,10 @@ li.login-attri .account-drop a {
     font-size: 14px;
 }
 .slick-prev::before {
-    content:"\e629";
+    content:"\e629" !important;
 }
 .slick-next::before {
-    content:"\e628";
+    content:"\e628" !important;
 }
 .home-slider .slick-next {
     right: 40px;
@@ -3111,7 +3111,7 @@ li.login-attri .account-drop a {
     opacity:9;
 }
 .slick-dotted.slick-slider {
-    margin-bottom:0px;
+    margin-bottom:0px !important;
 }
 
 /*-------------- Dashboard Navigation ------------*/
@@ -4791,7 +4791,7 @@ footer.skin-dark-footer ul.footer-bottom-social li a:hover, footer.skin-dark-foo
 		padding: 0 2rem;
 	}
 	.home-slider .item {
-		height: 100vh;
+		height: 85vh;
 	}
 	.lg-heading {
 		font-size: 65px;

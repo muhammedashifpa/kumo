@@ -18,8 +18,8 @@ function Header() {
         // <!-- Top header  -->
         // <!-- ============================================================== -->
         // <!-- Start Navigation --> */}
-        {/* <div className="header header-transparent dark-text"> */}
-        <div className="header dark-text">
+        <div className="header header-transparent dark-text">
+        {/* <div className="header dark-text"> */}
             <div className="container">
                 <nav id="navigation" className="navigation navigation-landscape">
                     <div className="nav-header">
