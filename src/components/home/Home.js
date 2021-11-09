@@ -11,8 +11,8 @@ import Slicker from './homecomponents/Slicker'
 function Home() {
     return (
         <div>
-            <Hero/>
-            {/* <Slicker /> */}
+            {/* <Hero/> */}
+            <Slicker />
             <CategoryStyle />
             <ProductsLists />
             <CustomerReview />

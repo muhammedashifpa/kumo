@@ -17,7 +17,7 @@ function Slicker() {
         autoplaySpeed: 3000,
       };
     return (
-        <CarosalWrapper {...settings} className="home-slider">
+        <Slider {...settings} className="home-slider">
           {/* <!-- Slide --> */}
             <SliderWrapper DataBackGround="assets/img/banner-2.png" >
               <div className="container">
@@ -94,7 +94,7 @@ function Slicker() {
                   </div>
                 </SliderWrapper>
 
-        </CarosalWrapper>
+        </Slider>
     );
 }
 
@@ -104,7 +104,7 @@ const CarosalWrapper = styled(Slider)`
 `
 
 const SliderWrapper = styled.div`
-  background-size:cover;
+  background-size:cover !important;
   background-position:center;
   background-repeate:no-repeat;
   min-height: 520px;
@@ -116,7 +116,7 @@ const SliderWrapper = styled.div`
   text-align: left;
   background-image:${props=>`url('${props.DataBackGround}')`};
   @media (min-width:1200px){
-    height:85vh;
+    height:100vh;
   }
   .slick-list{
     position:relative !important;

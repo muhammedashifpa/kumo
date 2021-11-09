@@ -24,7 +24,10 @@ function App() {
   return (
       <div className="App">
         <Router>
-          <Header/>
+          <Routes>
+            <Route path="/"  element={<Header headerClass="header-transparent" />} />
+            <Route path="*"  element={<Header headerClass=""/>} />
+          </Routes>
           <Routes>
             <Route path="*" element={<PageNotFound404 />} />
             <Route path="/" element={<Home />} />
