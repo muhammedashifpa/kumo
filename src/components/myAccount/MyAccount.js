@@ -1,35 +1,19 @@
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link,
-    useRouteMatch,
-    useParams
-  } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import React from 'react'
 import BreadCrumb from '../randomomponents/BreadCrumb'
 import ProfileDashbord from '../myAccount/myAccountComponents/ProfileDashbord'
-import MyOrder from "./myAccountComponents/MyOrder";
-import Wishlist from './myAccountComponents/WishList'
-import ProfileInfo from "./myAccountComponents/ProfileInfo";
-import Address from './myAccountComponents/Address'
-import AddAddress from "./myAccountComponents/AddAddress"
+import { useState } from 'react'
 
 
 function MyAccount() {
     return (
         <div>
             <BreadCrumb />
-            <section class="middle">
-				<div class="container">
-					<div class="row justify-content-center justify-content-between">
-                        <ProfileDashbord />
-                            {/* <MyOrder /> */}
-                            {/* <Wishlist /> */}
-                            {/* <ProfileInfo /> */}
-                            {/* <Address /> */}
-                            <AddAddress />
-
+            <section className="middle">
+				<div className="container">
+					<div className="row justify-content-center justify-content-between">
+                        <ProfileDashbord  />
+                        <Outlet />
                     </div>
 				</div>
 			</section>            

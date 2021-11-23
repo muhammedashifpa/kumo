@@ -1,7 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
 
-function ProfileInfo() {
+function EditProfile() {
     return (
         <div className="col-12 col-md-12 col-lg-8 col-xl-8">
 							{/* <!-- row --> */}
@@ -36,7 +35,7 @@ function ProfileInfo() {
 										</div>
 									</div>
 									
-									{/* <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+									<div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
 										<div className="form-group">
 											<label className="small text-dark ft-medium">Current Password *</label>
 											<input type="text" className="form-control" value="Current Password"/>
@@ -48,11 +47,11 @@ function ProfileInfo() {
 											<label className="small text-dark ft-medium">New Password *</label>
 											<input type="text" className="form-control" value="New Password" />
 										</div>
-									</div> */}
+									</div>
 									
 									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 										<div className="form-group">
-											<Link to='edit' className="btn btn-dark">Edit Profile</Link>
+											<button type="button" className="btn btn-dark">Save Changes</button>
 										</div>
 									</div>
 									
@@ -63,4 +62,4 @@ function ProfileInfo() {
     )
 }
 
-export default ProfileInfo
+export default EditProfile

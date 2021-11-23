@@ -3,7 +3,6 @@ import React from 'react'
 function MyOrder() {
     return (
         <div className="col-12 col-md-12 col-lg-8 col-xl-8 text-center">
-						
 							{/* <!-- Single Order List --> */}
 							<div className="ord_list_wrap border mb-4 mfliud">
 								<div className="ord_list_head gray d-flex align-items-center justify-content-between px-3 py-3">

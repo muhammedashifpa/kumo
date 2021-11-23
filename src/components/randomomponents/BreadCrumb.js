@@ -1,6 +1,6 @@
 import React from 'react'
 
-function BreadCrumb() {
+function BreadCrumb(props) {
     return (
         <div className="gray py-3">
 				<div className="container">

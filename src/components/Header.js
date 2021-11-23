@@ -60,7 +60,7 @@ function Header(props) {
                             <li><Link to="/">Home</Link></li>
                             <li><a href="#">Shop</a>
                                 <ul className="nav-dropdown nav-submenu">
-                                    <li><Link to="/shop">View All</Link></li>
+                                    <li><Link to="/category">View All</Link></li>
                                     <li><a href="">Men</a></li>
                                     <li><a href="">Women</a></li>
                                     <li><Link to="">Kids</Link></li>
@@ -82,7 +82,7 @@ function Header(props) {
                                     <li><Link to="/cart">Cart</Link></li>
                                     <li><Link to="/checkout">Checkout</Link></li>
                                     <li><Link to="/order-complete">Order-complete</Link></li>
-                                    <li><Link to="/my-account">MyAccount</Link></li>
+                                    <li><Link to="/my-account/my-profile">MyAccount</Link></li>
                                 </ul>
                             </li>
                             
