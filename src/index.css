@@ -10,3 +10,15 @@
     }
 
 }
+
+.error_form{
+    border-color: rgb(218, 0, 0);
+}
+.error_form::placeholder{
+    color:rgb(218, 0, 0);
+}
+
+.error_message{
+    color:rgb(218, 0, 0);
+    margin-left: 1rem;
+}

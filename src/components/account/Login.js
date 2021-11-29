@@ -1,6 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 function Login() {
+
+
+
+	
     return (
                 <div className="container my-5">
 					<div className="row align-items-start justify-content-center">					
@@ -35,7 +39,7 @@ function Login() {
 									<button type="submit" className="btn btn-md full-width bg-dark text-light fs-md ft-medium">Login</button>
 								</div>
                                 <div className="form-group text-center mb-0">
-                                    <p className="extra">Not a member?<Link to='/account/register' className="text-dark"> Register</Link></p>
+                                    <p className="extra">Not a member?<Link to='/accounts/register' className="text-dark"> Register</Link></p>
                                 </div>
 							</form>
 						</div>

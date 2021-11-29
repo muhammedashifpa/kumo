@@ -64,7 +64,7 @@ function AddCard() {
 								<div className="col-lg-6 col-md-6 col-sm-12">
 									<div className="form-group">
 										<input id="ak-2" className="checkbox-custom" name="ak-2" type="checkbox"/>
-										<label for="ak-2" className="checkbox-custom-label">By Continuing, you ar'e agree to conditions</label>
+										<label htmlFor="ak-2" className="checkbox-custom-label">By Continuing, you ar'e agree to conditions</label>
 									</div>
 								</div>
 								

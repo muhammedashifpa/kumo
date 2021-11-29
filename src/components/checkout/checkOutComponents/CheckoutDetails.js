@@ -281,7 +281,7 @@ function CheckoutDetails() {
 															<div className="col-lg-6 col-md-6 col-sm-12">
 																<div className="form-group">
 																	<input id="al-2" className="checkbox-custom" name="al-2" type="checkbox" />
-																	<label for="al-2" className="checkbox-custom-label">By Continuing, you ar'e agree to conditions</label>
+																	<label htmlFor="al-2" className="checkbox-custom-label">By Continuing, you ar'e agree to conditions</label>
 																</div>
 															</div>
 															

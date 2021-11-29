@@ -93,7 +93,7 @@ function AddAddress() {
 									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 										<div className="form-group">
 											<input id="delivery" className="checkbox-custom" name="delivery" type="checkbox"/>
-											<label for="delivery" className="checkbox-custom-label">Set Default delivery address</label>
+											<label htmlFor="delivery" className="checkbox-custom-label">Set Default delivery address</label>
 										</div>
 									</div>
 									

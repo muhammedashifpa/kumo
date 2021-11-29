@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 function LogInModal() {
     return (
         <div>
@@ -46,7 +46,7 @@ function LogInModal() {
 								</div>
 								
 								<div className="form-group text-center mb-0">
-									<p className="extra">Not a member?<a href="#et-register-wrap" className="text-dark"> Register</a></p>
+									<p className="extra">Not a member?<Link to='/account/register' className="text-dark"> Register</Link></p>
 								</div>
 							</form>
 						</div>

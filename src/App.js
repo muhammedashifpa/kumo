@@ -39,7 +39,7 @@ function App() {
             <Routes>
                 <Route path="*" element={<PageNotFound404 />} />
                 <Route path="/" element={<Home />} />
-                <Route path="account" >
+                <Route path="accounts" >
                     <Routes>
                         <Route path="" element={<Navigate replace to="login" />} />
                         <Route path="login" element={<Login />} />

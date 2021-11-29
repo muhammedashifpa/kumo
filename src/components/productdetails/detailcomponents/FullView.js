@@ -47,27 +47,27 @@ function FullView() {
 									<div className="text-left">
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="white8"/>
-											<label className="form-option-label rounded-circle" for="white8"><span className="form-option-color rounded-circle blc7"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="white8"><span className="form-option-color rounded-circle blc7"></span></label>
 										</div>
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="blue8"/>
-											<label className="form-option-label rounded-circle" for="blue8"><span className="form-option-color rounded-circle blc2"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="blue8"><span className="form-option-color rounded-circle blc2"></span></label>
 										</div>
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="yellow8"/>
-											<label className="form-option-label rounded-circle" for="yellow8"><span className="form-option-color rounded-circle blc5"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="yellow8"><span className="form-option-color rounded-circle blc5"></span></label>
 										</div>
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="pink8"/>
-											<label className="form-option-label rounded-circle" for="pink8"><span className="form-option-color rounded-circle blc3"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="pink8"><span className="form-option-color rounded-circle blc3"></span></label>
 										</div>
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="red"/>
-											<label className="form-option-label rounded-circle" for="red"><span className="form-option-color rounded-circle blc4"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="red"><span className="form-option-color rounded-circle blc4"></span></label>
 										</div>
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="green"/>
-											<label className="form-option-label rounded-circle" for="green"><span className="form-option-color rounded-circle blc6"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="green"><span className="form-option-color rounded-circle blc6"></span></label>
 										</div>
 									</div>
 								</div>
@@ -77,51 +77,51 @@ function FullView() {
 									<div className="text-left pb-0 pt-2">
 										<div className="form-check size-option form-option form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="28" checked=""/>
-											<label className="form-option-label" for="28">28</label>
+											<label className="form-option-label" htmlFor="28">28</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="30"/>
-											<label className="form-option-label" for="30">30</label>
+											<label className="form-option-label" htmlFor="30">30</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="32"/>
-											<label className="form-option-label" for="32">32</label>
+											<label className="form-option-label" htmlFor="32">32</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="34"/>
-											<label className="form-option-label" for="34">34</label>
+											<label className="form-option-label" htmlFor="34">34</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="36"/>
-											<label className="form-option-label" for="36">36</label>
+											<label className="form-option-label" htmlFor="36">36</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="38"/>
-											<label className="form-option-label" for="38">38</label>
+											<label className="form-option-label" htmlFor="38">38</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="40"/>
-											<label className="form-option-label" for="40">40</label>
+											<label className="form-option-label" htmlFor="40">40</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="42"/>
-											<label className="form-option-label" for="42">42</label>
+											<label className="form-option-label" htmlFor="42">42</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="44"/>
-											<label className="form-option-label" for="44">44</label>
+											<label className="form-option-label" htmlFor="44">44</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="46"/>
-											<label className="form-option-label" for="46">46</label>
+											<label className="form-option-label" htmlFor="46">46</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="48"/>
-											<label className="form-option-label" for="48">48</label>
+											<label className="form-option-label" htmlFor="48">48</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
 											<input className="form-check-input" type="radio" name="size" id="50"/>
-											<label className="form-option-label" for="50">50</label>
+											<label className="form-option-label" htmlFor="50">50</label>
 										</div>
 									</div>
 								</div>
@@ -328,23 +328,23 @@ function FullView() {
 													<div className="srt_013">
 														<div className="submit-rating">
 														  <input id="star-5" type="radio" name="rating" value="star-5" />
-														  <label for="star-5" title="5 stars">
+														  <label htmlFor="star-5" title="5 stars">
 															<i className="active fa fa-star" aria-hidden="true"></i>
 														  </label>
 														  <input id="star-4" type="radio" name="rating" value="star-4" />
-														  <label for="star-4" title="4 stars">
+														  <label htmlFor="star-4" title="4 stars">
 															<i className="active fa fa-star" aria-hidden="true"></i>
 														  </label>
 														  <input id="star-3" type="radio" name="rating" value="star-3" />
-														  <label for="star-3" title="3 stars">
+														  <label htmlFor="star-3" title="3 stars">
 															<i className="active fa fa-star" aria-hidden="true"></i>
 														  </label>
 														  <input id="star-2" type="radio" name="rating" value="star-2" />
-														  <label for="star-2" title="2 stars">
+														  <label htmlFor="star-2" title="2 stars">
 															<i className="active fa fa-star" aria-hidden="true"></i>
 														  </label>
 														  <input id="star-1" type="radio" name="rating" value="star-1" />
-														  <label for="star-1" title="1 star">
+														  <label htmlFor="star-1" title="1 star">
 															<i className="active fa fa-star" aria-hidden="true"></i>
 														  </label>
 														</div>
