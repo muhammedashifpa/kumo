@@ -12,7 +12,7 @@ function MyAccount(props) {
             <section className="middle">
 				<div className="container">
 					<div className="row justify-content-center justify-content-between">
-                        <ProfileDashbord  authUpdate={props.authUpdate} />
+                        <ProfileDashbord />
                         <Outlet />
                     </div>
 				</div>

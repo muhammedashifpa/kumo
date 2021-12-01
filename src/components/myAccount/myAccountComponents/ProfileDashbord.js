@@ -9,8 +9,6 @@ import {
 
 function ProfileDashbord(props) {
 		const navigate = useNavigate();
-		// useEffect(() => {
-		// });
 		function logout(){
 			const response = axiosInstance.post('accounts/logout/', {
 				refresh_token: localStorage.getItem('refresh_token'),
@@ -19,8 +17,6 @@ function ProfileDashbord(props) {
 			localStorage.removeItem('refresh_token');
 			axiosInstance.defaults.headers['Authorization'] = null;
 			navigate('/');
-			// props.authUpdate()
-
 		}
     return (
         <div className="col-12 col-md-12 col-lg-4 col-xl-4 text-center miliods" onClick={props.authUpdate}>
@@ -43,7 +39,7 @@ function ProfileDashbord(props) {
 										<li><NavLink to="wishlist" ><i className="lni lni-heart mr-2"></i>Wishlist</NavLink></li>
 										<li><NavLink to="addresses"><i className="lni lni-map-marker mr-2"></i>Addresses</NavLink></li>
 										<li><NavLink to="payment-methode"><i className="lni lni-mastercard mr-2"></i>Payment Methode</NavLink></li>
-										<li><a href="" onClick={logout}><i className="lni lni-power-switch mr-2"></i>Log Out</a></li>
+										<li><NavLink to="/" onClick={logout}><i className="lni lni-power-switch mr-2"></i>Log Out</NavLink></li>
 									</ul>
 								</div>
 								

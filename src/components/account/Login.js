@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axiosInstance from '../../axios';
 import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom'
@@ -7,7 +7,13 @@ import jwt_decode from "jwt-decode";
 
 
 function Login(props) {
-	const navigate = useNavigate();
+const navigate = useNavigate();
+	useEffect(() => {
+		if (props.authData.auth){
+			navigate('/');
+			console.log('navigated to home')
+		}
+	})
 	const initialFormData = Object.freeze({
 		email: '',
 		password: '',
@@ -44,8 +50,6 @@ function Login(props) {
 				axiosInstance.defaults.headers['Authorization'] =
 					'JWT ' + localStorage.getItem('access_token');
 				navigate('/');
-				// console.log(res);
-				// console.log(res.data);
 				const token = res.data.access;
 				const user = jwt_decode(token);
 				console.log(user);

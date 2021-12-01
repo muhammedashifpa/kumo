@@ -116,7 +116,7 @@ function Header(props) {
                                                     </a>
                                                     :
                                                     <a href="#" data-toggle="modal" data-target="#login">
-                                                        <i className="lni lni-heart"></i><span className="dn-counter">2</span>
+                                                        <i className="lni lni-heart"></i>
                                                     </a>
                             }
 
@@ -127,7 +127,7 @@ function Header(props) {
                                                     </a>
                                                     :
                                                     <a href="#" data-toggle="modal" data-target="#login">
-                                                        <i className="lni lni-shopping-basket"></i><span className="dn-counter">3</span>
+                                                        <i className="lni lni-shopping-basket"></i>
                                                     </a>
                             }
 

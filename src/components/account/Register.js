@@ -6,6 +6,12 @@ import {Link} from 'react-router-dom'
 
 function Register() {
 	const navigate = useNavigate();
+	useEffect(() => {
+		if (props.authData.auth){
+			navigate('/');
+			console.log('navigated to home')
+		}
+	})
 	const initialFormData = Object.freeze({
 		firstname:'',
 		lastname:'',

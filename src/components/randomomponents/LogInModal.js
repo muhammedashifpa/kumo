@@ -45,12 +45,6 @@ function LogInModal(props) {
 				localStorage.setItem('refresh_token', res.data.refresh);
 				axiosInstance.defaults.headers['Authorization'] =
 					'JWT ' + localStorage.getItem('access_token');
-				// navigate('/');
-				// console.log(res);
-				// console.log(res.data);
-				// const token = res.data.access;
-				// const user = jwt_decode(token);
-				// console.log(user);
 				props.authUpdate()
 				closeDialog()
 
