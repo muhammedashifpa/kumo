@@ -1,7 +1,7 @@
-import React, {useState, SyntheticEvent} from 'react'
-import {Link} from 'react-router-dom'
+import React, {useState} from 'react'
 import axiosInstance from '../../axios';
 import { useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 
 
 function Register() {
@@ -140,7 +140,7 @@ function Register() {
 									<button type="submit" className="btn btn-md full-width bg-dark text-light fs-md ft-medium" onClick={handleSubmit}>Create An Account</button>
 								</div>
                                 <div className="form-group text-center mb-0">
-                                    <p className="extra">Already a member?<Link to='/account/login' className="text-dark"> Login</Link></p>
+                                    <p className="extra">Already a member?<Link to='/accounts/login' className="text-dark"> Login</Link></p>
                                 </div>
 							</form>
 						</div>

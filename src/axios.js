@@ -34,7 +34,7 @@ axiosInstance.interceptors.response.use(
 			error.response.status === 401 &&
 			originalRequest.url === baseURL + 'token/refresh/'
 		) {
-			window.location.href = '/login/';
+			window.location.href = 'accounts/login/';
 			return Promise.reject(error);
 		}
 
@@ -63,6 +63,8 @@ axiosInstance.interceptors.response.use(
 								'JWT ' + response.data.access;
 							originalRequest.headers['Authorization'] =
 								'JWT ' + response.data.access;
+								console.log('token refresh');
+							
 
 							return axiosInstance(originalRequest);
 						})

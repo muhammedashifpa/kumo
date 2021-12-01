@@ -2,10 +2,10 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
   Navigate
 } from "react-router-dom";
 import './App.css';
+import {useState} from 'react'
 import Modals from './components/Modals'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -14,7 +14,7 @@ import Category from './components/category/Category'
 import ProductDetail from "./components/productdetails/ProductDetail";
 import Cart from "./components/cart/Cart";
 import Checkout from "./components/checkout/Checkout";
-import CompleateOrder from './components/compleateOrder/CompleateOrder';
+import CompleateOrder from './components/compleateOrder/CompleteOrder';
 import PageNotFound404 from './components/404/PageNotFound404'
 import MyAccount from './components/myAccount/MyAccount'
 import ProfileInfo from "./components/myAccount/myAccountComponents/ProfileInfo"
@@ -27,14 +27,41 @@ import PaymentMethod from "./components/myAccount/myAccountComponents/PaymentMet
 import AddCard from "./components/myAccount/myAccountComponents/AddCard"
 import Login from "./components/account/Login";
 import Register from "./components/account/Register"
+import jwt_decode from "jwt-decode";
+
+
+
 
 function App() {
+
+    const initialData = Object.freeze({
+        auth:false,
+		user: null,
+	});
+    const [data, updateData] = useState(initialData);
+    const authUpdate = () => {
+        const token = localStorage.getItem('access_token')
+        const IsAuthenticated = token ? true: false;
+        console.log('updated')
+        updateData({
+            ...data,
+           auth : IsAuthenticated,
+           user : IsAuthenticated ? jwt_decode(token).user: null
+           
+        })
+
+	};
+    window.onload = ( () =>{
+        authUpdate()
+    });
   return (
       <div className="App">
+        {/* <LogInModal authUpdate={authUpdate} /> */}
         <Router>
             <Routes>
-                <Route path="/"  element={<Header headerClass="header-transparent" />} />
-                <Route path="*"  element={<Header headerClass=""/>} />
+                <Route path="/"  element={<Header authData={data}  headerClass="header-transparent" />} />
+                <Route path="*"  element={<Header authData={data}  headerClass=""/>} />
+                {/* <Route path="*"  element={<LogInModal authData={data} authUpdate={authUpdate}/> } /> */}
             </Routes>
             <Routes>
                 <Route path="*" element={<PageNotFound404 />} />
@@ -42,7 +69,7 @@ function App() {
                 <Route path="accounts" >
                     <Routes>
                         <Route path="" element={<Navigate replace to="login" />} />
-                        <Route path="login" element={<Login />} />
+                        <Route path="login" element={<Login authUpdate={authUpdate} />} />
                         <Route path="register" element={<Register />} />
                     </Routes>
                 </Route>
@@ -51,7 +78,7 @@ function App() {
                 <Route path="cart" element={<Cart />} />
                 <Route path="checkout" element={<Checkout />} />
                 <Route path="order-complete" element={<CompleateOrder />} />
-                <Route path="my-account"  element={<MyAccount />}>
+                <Route path="my-account"  element={<MyAccount authUpdate={authUpdate} />}>
                     <Route path="" element={<Navigate replace to="my-profile" />} />
                     <Route path="my-profile" element={<ProfileInfo/>}/>
                     <Route path="my-profile/edit" element={<EditProfile/>}/>
@@ -64,7 +91,7 @@ function App() {
                 </Route>
             </Routes>
             <Footer/>
-            <Modals />
+            <Modals authUpdate={authUpdate} />
         </Router>
       </div>
   );

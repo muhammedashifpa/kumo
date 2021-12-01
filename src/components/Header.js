@@ -12,7 +12,7 @@ function Header(props) {
     function openWishlist() {
         document.getElementById("Wishlist").style.display = "block";
     }
-    
+
     return (
         
         <div>
@@ -43,7 +43,9 @@ function Header(props) {
                             </li> */}
                             <li>
                                 <a href="#" onClick={openWishlist}>
+                                {/* <a href="#" onClick={authCheck}> */}
                                     <i className="lni lni-heart"></i><span className="dn-counter">2</span>
+                                    {/* <i className="lni lni-heart"></i><span className="dn-counter">{user_id}</span> */}
                                 </a>
                             </li>
                             <li>
@@ -97,20 +99,49 @@ function Header(props) {
                                 </a>
                             </li>
                             <li>
-                                <a href="#" data-toggle="modal" data-target="#login">
-                                    <i className="lni lni-user"></i>
-                                </a>
+                                {props.authData.auth ?<Link to="/my-account/my-profile">
+                                {props.authData.user}&nbsp;&nbsp;&nbsp;
+                                                    <i className="lni lni-user"></i>
+                                                </Link>
+                                                    :
+                                                <a href="#" data-toggle="modal" data-target="#login">
+                                                    <i className="lni lni-user"></i>
+                                                </a>
+                            }
+
                             </li>
                             <li>
+                                {props.authData.auth ?<a href="#" onClick={openWishlist}>
+                                                        <i className="lni lni-heart"></i><span className="dn-counter">2</span>
+                                                    </a>
+                                                    :
+                                                    <a href="#" data-toggle="modal" data-target="#login">
+                                                        <i className="lni lni-heart"></i><span className="dn-counter">2</span>
+                                                    </a>
+                            }
+
+                            </li>
+                            <li>
+                                {props.authData.auth ?<a href="#" onClick={openCart}>
+                                                        <i className="lni lni-shopping-basket"></i><span className="dn-counter">3</span>
+                                                    </a>
+                                                    :
+                                                    <a href="#" data-toggle="modal" data-target="#login">
+                                                        <i className="lni lni-shopping-basket"></i><span className="dn-counter">3</span>
+                                                    </a>
+                            }
+
+                            </li>
+                            {/* <li>
                                 <a href="#" onClick={openWishlist}>
                                     <i className="lni lni-heart"></i><span className="dn-counter">2</span>
                                 </a>
-                            </li>
-                            <li>
+                            </li> */}
+                            {/* <li>
                                 <a href="#" onClick={openCart}>
                                     <i className="lni lni-shopping-basket"></i><span className="dn-counter">3</span>
                                 </a>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </nav>

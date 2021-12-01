@@ -6,11 +6,11 @@ import Wishlist from './randomomponents/Wishlist'
 import SideCart from './randomomponents/SideCart'
 
 
-function Modals() {
+function Modals(props) {
     return (
         <div>
             <ProductViewModal />
-            <LogInModal />
+            <LogInModal authUpdate={props.authUpdate}/>
             <Search />
             <Wishlist />
             <SideCart />

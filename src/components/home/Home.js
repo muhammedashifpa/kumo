@@ -15,7 +15,7 @@ function Home() {
             <Slicker />
             <CategoryStyle />
             <ProductsLists />
-            <CustomerReview />
+            {/* <CustomerReview /> */}
             <HomeBlog />
             <HomeInstagram />
         </div>

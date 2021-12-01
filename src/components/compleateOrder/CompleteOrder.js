@@ -1,5 +1,5 @@
 import React from 'react'
-import Content from './CompleateOrderComponents/Content'
+import Content from './CompleteOrderComponents/Content'
 
 function CompleateOrder() {
     return (

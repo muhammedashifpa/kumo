@@ -5,14 +5,14 @@ import ProfileDashbord from '../myAccount/myAccountComponents/ProfileDashbord'
 import { useState } from 'react'
 
 
-function MyAccount() {
+function MyAccount(props) {
     return (
         <div>
             <BreadCrumb />
             <section className="middle">
 				<div className="container">
 					<div className="row justify-content-center justify-content-between">
-                        <ProfileDashbord  />
+                        <ProfileDashbord  authUpdate={props.authUpdate} />
                         <Outlet />
                     </div>
 				</div>
