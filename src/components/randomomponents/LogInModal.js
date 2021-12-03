@@ -1,14 +1,18 @@
+// import { useNavigate } from 'react-router-dom';
 import React, {useState} from 'react'
 import axiosInstance from '../../axios';
-// import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom'
-import jwt_decode from "jwt-decode";
+import {useDispatch} from 'react-redux'
+import {auth} from '../../features/user'
+
 
 function closeDialog() {
 	document.getElementById("login").click(); // Click on the checkbox
   }
 
 function LogInModal(props) {
+    const dispatch = useDispatch()
+
 	// const navigate = useNavigate();
 	const initialFormData = Object.freeze({
 		email: '',
@@ -45,7 +49,8 @@ function LogInModal(props) {
 				localStorage.setItem('refresh_token', res.data.refresh);
 				axiosInstance.defaults.headers['Authorization'] =
 					'JWT ' + localStorage.getItem('access_token');
-				props.authUpdate()
+				dispatch(auth())
+				
 				closeDialog()
 
 			}).catch(function (error) {

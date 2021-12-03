@@ -1,25 +1,23 @@
 import React, { useEffect } from 'react'
 import axiosInstance from '../../../axios';
-
-import {
-    BrowserRouter as Router,
-	NavLink,
-	useNavigate
-  } from "react-router-dom";
+import {useSelector} from 'react-redux'
+import {auth} from '../../../features/user'
+import {useDispatch} from 'react-redux'
+import {BrowserRouter as Router,NavLink,Link,} from "react-router-dom";
 
 function ProfileDashbord(props) {
-		const navigate = useNavigate();
-		function logout(){
-			const response = axiosInstance.post('accounts/logout/', {
-				refresh_token: localStorage.getItem('refresh_token'),
-			});
-			localStorage.removeItem('access_token');
-			localStorage.removeItem('refresh_token');
-			axiosInstance.defaults.headers['Authorization'] = null;
-			navigate('/');
-		}
+    const dispatch = useDispatch()
+	function logout(){
+		const response = axiosInstance.post('accounts/logout/', {
+			refresh_token: localStorage.getItem('refresh_token'),
+		});
+		localStorage.removeItem('access_token');
+		localStorage.removeItem('refresh_token');
+		axiosInstance.defaults.headers['Authorization'] = null;
+		dispatch(auth())
+	}
     return (
-        <div className="col-12 col-md-12 col-lg-4 col-xl-4 text-center miliods" onClick={props.authUpdate}>
+        <div className="col-12 col-md-12 col-lg-4 col-xl-4 text-center miliods">
 							<div className="d-block border rounded mfliud-bot">
 								<div className="dashboard_author px-2 py-5">
 									<div className="dash_auth_thumb circle p-1 border d-inline-flex mx-auto mb-2">
@@ -39,7 +37,7 @@ function ProfileDashbord(props) {
 										<li><NavLink to="wishlist" ><i className="lni lni-heart mr-2"></i>Wishlist</NavLink></li>
 										<li><NavLink to="addresses"><i className="lni lni-map-marker mr-2"></i>Addresses</NavLink></li>
 										<li><NavLink to="payment-methode"><i className="lni lni-mastercard mr-2"></i>Payment Methode</NavLink></li>
-										<li><NavLink to="/" onClick={logout}><i className="lni lni-power-switch mr-2"></i>Log Out</NavLink></li>
+										<li><Link to="/" onClick={logout}><i className="lni lni-power-switch mr-2"></i>Log Out</Link></li>
 									</ul>
 								</div>
 								

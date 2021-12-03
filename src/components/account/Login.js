@@ -3,14 +3,24 @@ import axiosInstance from '../../axios';
 import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 import jwt_decode from "jwt-decode";
+import {useSelector} from 'react-redux'
+import {auth} from '../../features/user'
+import {useDispatch} from 'react-redux'
+
+
+
 
 
 
 function Login(props) {
-const navigate = useNavigate();
+	// let history = useHistory();
+    const user = useSelector((state)=>state.user.value)
+    const dispatch = useDispatch()
+
+	const navigate = useNavigate();
 	useEffect(() => {
-		if (props.authData.auth){
-			navigate('/');
+		if (user.auth){
+			navigate(-1);
 			console.log('navigated to home')
 		}
 	})
@@ -49,11 +59,11 @@ const navigate = useNavigate();
 				localStorage.setItem('refresh_token', res.data.refresh);
 				axiosInstance.defaults.headers['Authorization'] =
 					'JWT ' + localStorage.getItem('access_token');
-				navigate('/');
+				navigate(-1);
 				const token = res.data.access;
 				const user = jwt_decode(token);
 				console.log(user);
-				props.authUpdate()
+				dispatch(auth())
 
 			}).catch(function (error) {
 				if (error.response) {

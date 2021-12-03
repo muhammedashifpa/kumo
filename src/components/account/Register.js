@@ -1,13 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import axiosInstance from '../../axios';
 import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom'
+// import {auth} from '../../features/user'
+import {useSelector} from 'react-redux'
+
+
 
 
 function Register() {
+	const user = useSelector((state)=>state.user.value)
 	const navigate = useNavigate();
 	useEffect(() => {
-		if (props.authData.auth){
+		if (user.auth){
 			navigate('/');
 			console.log('navigated to home')
 		}

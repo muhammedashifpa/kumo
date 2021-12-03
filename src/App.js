@@ -29,42 +29,20 @@ import Login from "./components/account/Login";
 import Register from "./components/account/Register"
 import jwt_decode from "jwt-decode";
 import ScrollToTop from "./components/randomomponents/ScrollToTop";
-// import PrivateRoute from "./components/randomomponents/PrivateRoute"
+import PrivateRoute from "./components/randomomponents/PrivateRoute"
 
 
 
 
 function App() {
 
-    const initialData = Object.freeze({
-        auth:false,
-		user: null,
-	});
-    const [data, updateData] = useState(initialData);
-    const authUpdate = () => {
-        const token = localStorage.getItem('access_token')
-        const IsAuthenticated = token ? true: false;
-        updateData({
-            ...data,
-            auth : IsAuthenticated,
-            user : IsAuthenticated ? jwt_decode(token).user: null
-            
-        })
-        console.log('updated')
-        console.log(data)
-        console.log(data.auth)
-
-	};
-    window.onload = ( () =>{
-        authUpdate()
-    });
   return (
       <div className="App">
         <Router>
             <ScrollToTop/>
             <Routes>
-                <Route path="/"  element={<Header authData={data}  headerClass="header-transparent" />} />
-                <Route path="*"  element={<Header authData={data}  headerClass=""/>} />
+                <Route path="/"  element={<Header   headerClass="header-transparent" />} />
+                <Route path="*"  element={<Header   headerClass=""/>} />
             </Routes>
             <Routes>
                 <Route path="*" element={<PageNotFound404 />} />
@@ -72,17 +50,16 @@ function App() {
                 <Route path="accounts" >
                     <Routes>
                         <Route path="" element={<Navigate replace to="login" />} />
-                        <Route path="login" element={<Login authData={data} authUpdate={authUpdate} />} />
-                        <Route path="register" element={<Register authData={data} />} />
+                        <Route path="login" element={<Login />} />
+                        <Route path="register" element={<Register />} />
                     </Routes>
                 </Route>
                 <Route path="category" element={<Category />} />
                 <Route path="product" element={<ProductDetail />} />
-                <Route path="cart" element={<Cart />} />
-                <Route path="checkout" element={<Checkout />} />
-                <Route path="order-complete" element={<CompleateOrder />} />
-                {/* <Route path="hello" element={<PrivateRoute authData={data} component={<MyAccount authUpdate={authUpdate}/>} />} /> */}
-                <Route path="my-account"  element={<MyAccount authUpdate={authUpdate} />}>
+                <Route path="cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
+                <Route path="checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
+                <Route path="order-complete" element={<PrivateRoute><CompleateOrder /></PrivateRoute>} />
+                <Route path="my-account"  element={<MyAccount/>}>
                     <Route path="" element={<Navigate replace to="my-profile" />} />
                     <Route path="my-profile" element={<ProfileInfo/>}/>
                     <Route path="my-profile/edit" element={<EditProfile/>}/>
@@ -95,7 +72,7 @@ function App() {
                 </Route>
             </Routes>
             <Footer/>
-            <Modals authUpdate={authUpdate} />
+            <Modals/>
         </Router>
       </div>
   );

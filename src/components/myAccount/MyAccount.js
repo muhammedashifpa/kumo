@@ -1,23 +1,27 @@
-import { Outlet } from "react-router-dom";
+import { Outlet,Navigate } from "react-router-dom";
 import React from 'react'
 import BreadCrumb from '../randomomponents/BreadCrumb'
 import ProfileDashbord from '../myAccount/myAccountComponents/ProfileDashbord'
-import { useState } from 'react'
+import {useSelector} from 'react-redux'
+
 
 
 function MyAccount(props) {
-    return (
+    const user = useSelector((state)=>state.user.value)
+    return user.auth ? (
         <div>
             <BreadCrumb />
             <section className="middle">
 				<div className="container">
 					<div className="row justify-content-center justify-content-between">
-                        <ProfileDashbord />
+                        <ProfileDashbord  />
                         <Outlet />
                     </div>
 				</div>
 			</section>            
         </div>
+    ) :(
+        <Navigate to='/accounts/login'/>
     )
 }
 

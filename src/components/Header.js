@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
+import {useSelector} from 'react-redux'
 
 
 function Header(props) {
+    const user = useSelector((state)=>state.user.value)
     function openSearch() {
         document.getElementById("Search").style.display = "block";
     }
@@ -99,8 +101,8 @@ function Header(props) {
                                 </a>
                             </li>
                             <li>
-                                {props.authData.auth ?<Link to="/my-account/my-profile">
-                                {props.authData.user}&nbsp;&nbsp;&nbsp;
+                                {user.auth ?<Link to="/my-account/my-profile">
+                                {user.username}&nbsp;&nbsp;&nbsp;
                                                     <i className="lni lni-user"></i>
                                                 </Link>
                                                     :
@@ -111,7 +113,7 @@ function Header(props) {
 
                             </li>
                             <li>
-                                {props.authData.auth ?<a href="#" onClick={openWishlist}>
+                                {user.auth ?<a href="#" onClick={openWishlist}>
                                                         <i className="lni lni-heart"></i><span className="dn-counter">2</span>
                                                     </a>
                                                     :
@@ -122,7 +124,7 @@ function Header(props) {
 
                             </li>
                             <li>
-                                {props.authData.auth ?<a href="#" onClick={openCart}>
+                                {user.auth ?<a href="#" onClick={openCart}>
                                                         <i className="lni lni-shopping-basket"></i><span className="dn-counter">3</span>
                                                     </a>
                                                     :
