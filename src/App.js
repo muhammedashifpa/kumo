@@ -1,3 +1,26 @@
+import PaymentMethod from "./components/myAccount/myAccountComponents/PaymentMethod"
+import ProfileInfo from "./components/myAccount/myAccountComponents/ProfileInfo"
+import EditProfile from "./components/myAccount/myAccountComponents/EditProfile"
+import AddAddress from "./components/myAccount/myAccountComponents/AddAddress"
+import Wishlist from "./components/myAccount/myAccountComponents/WishList"
+import MyOrder from "./components/myAccount/myAccountComponents/MyOrder"
+import Address from "./components/myAccount/myAccountComponents/Address"
+import AddCard from "./components/myAccount/myAccountComponents/AddCard"
+import CompleateOrder from './components/compleateOrder/CompleteOrder';
+import ProductDetail from "./components/productdetails/ProductDetail";
+import PrivateRoute from "./components/randomomponents/PrivateRoute"
+import ScrollToTop from "./components/randomomponents/ScrollToTop";
+import PageNotFound404 from './components/404/PageNotFound404'
+import MyAccount from './components/myAccount/MyAccount'
+import Checkout from "./components/checkout/Checkout";
+import Category from './components/category/Category'
+import Register from "./components/account/Register"
+import Login from "./components/account/Login";
+import Cart from "./components/cart/Cart";
+import Home from './components/home/Home'
+import Modals from './components/Modals'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import {
   BrowserRouter as Router,
   Routes,
@@ -5,31 +28,6 @@ import {
   Navigate
 } from "react-router-dom";
 import './App.css';
-import {useState, useEffect} from 'react'
-import Modals from './components/Modals'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Home from './components/home/Home'
-import Category from './components/category/Category'
-import ProductDetail from "./components/productdetails/ProductDetail";
-import Cart from "./components/cart/Cart";
-import Checkout from "./components/checkout/Checkout";
-import CompleateOrder from './components/compleateOrder/CompleteOrder';
-import PageNotFound404 from './components/404/PageNotFound404'
-import MyAccount from './components/myAccount/MyAccount'
-import ProfileInfo from "./components/myAccount/myAccountComponents/ProfileInfo"
-import MyOrder from "./components/myAccount/myAccountComponents/MyOrder"
-import EditProfile from "./components/myAccount/myAccountComponents/EditProfile"
-import Wishlist from "./components/myAccount/myAccountComponents/WishList"
-import Address from "./components/myAccount/myAccountComponents/Address"
-import AddAddress from "./components/myAccount/myAccountComponents/AddAddress"
-import PaymentMethod from "./components/myAccount/myAccountComponents/PaymentMethod"
-import AddCard from "./components/myAccount/myAccountComponents/AddCard"
-import Login from "./components/account/Login";
-import Register from "./components/account/Register"
-import jwt_decode from "jwt-decode";
-import ScrollToTop from "./components/randomomponents/ScrollToTop";
-import PrivateRoute from "./components/randomomponents/PrivateRoute"
 
 
 
@@ -55,7 +53,7 @@ function App() {
                     </Routes>
                 </Route>
                 <Route path="category" element={<Category />} />
-                <Route path="product" element={<ProductDetail />} />
+                <Route path="product/:slug" element={<ProductDetail />} />
                 <Route path="cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
                 <Route path="checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
                 <Route path="order-complete" element={<PrivateRoute><CompleateOrder /></PrivateRoute>} />

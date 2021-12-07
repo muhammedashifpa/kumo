@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react'
 import axiosInstance from '../../../axios';
-import {useSelector} from 'react-redux'
 import {auth} from '../../../features/user'
 import {useDispatch} from 'react-redux'
-import {BrowserRouter as Router,NavLink,Link,} from "react-router-dom";
+import {NavLink,Link,} from "react-router-dom";
 
 function ProfileDashbord(props) {
     const dispatch = useDispatch()
 	function logout(){
-		const response = axiosInstance.post('accounts/logout/', {
+		axiosInstance.post('accounts/logout/', {
 			refresh_token: localStorage.getItem('refresh_token'),
 		});
 		localStorage.removeItem('access_token');
