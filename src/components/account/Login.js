@@ -3,18 +3,13 @@ import axiosInstance from '../../axios';
 import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 import jwt_decode from "jwt-decode";
-import {useSelector} from 'react-redux'
-import {auth} from '../../features/user'
-import {useDispatch} from 'react-redux'
-
-
-
+import {useDispatch,useSelector} from 'react-redux'
+import {login as loginReducer} from '../../features/users/action'
 
 
 
 function Login(props) {
-	// let history = useHistory();
-    const user = useSelector((state)=>state.user.value)
+    const user = useSelector((state)=>state.user)
     const dispatch = useDispatch()
 
 	const navigate = useNavigate();
@@ -63,7 +58,7 @@ function Login(props) {
 				const token = res.data.access;
 				const user = jwt_decode(token);
 				console.log(user);
-				dispatch(auth())
+				dispatch(loginReducer())
 
 			}).catch(function (error) {
 				if (error.response) {

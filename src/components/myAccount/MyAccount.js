@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux'
 
 
 function MyAccount(props) {
-    const user = useSelector((state)=>state.user.value)
+    const user = useSelector((state)=>state.user)
     return user.auth ? (
         <div>
             <BreadCrumb />

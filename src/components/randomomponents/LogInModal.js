@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import axiosInstance from '../../axios';
 import {Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import {auth} from '../../features/user'
+import {login} from '../../features/users/action'
 
 
 function closeDialog() {
@@ -13,7 +13,6 @@ function closeDialog() {
 function LogInModal(props) {
     const dispatch = useDispatch()
 
-	// const navigate = useNavigate();
 	const initialFormData = Object.freeze({
 		email: '',
 		password: '',
@@ -49,7 +48,7 @@ function LogInModal(props) {
 				localStorage.setItem('refresh_token', res.data.refresh);
 				axiosInstance.defaults.headers['Authorization'] =
 					'JWT ' + localStorage.getItem('access_token');
-				dispatch(auth())
+				dispatch(login())
 				
 				closeDialog()
 

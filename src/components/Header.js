@@ -4,7 +4,8 @@ import {useSelector} from 'react-redux'
 
 
 function Header(props) {
-    const user = useSelector((state)=>state.user.value)
+    const user = useSelector((state)=>state.user)
+    
     function openSearch() {
         document.getElementById("Search").style.display = "block";
     }
@@ -114,7 +115,7 @@ function Header(props) {
                             </li>
                             <li>
                                 {user.auth ?<a href="#" onClick={openWishlist}>
-                                                        <i className="lni lni-heart"></i><span className="dn-counter">2</span>
+                                                        <i className="lni lni-heart"></i><span className="dn-counter">3</span>
                                                     </a>
                                                     :
                                                     <a href="#" data-toggle="modal" data-target="#login">

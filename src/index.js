@@ -1,18 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import reportWebVitals from './reportWebVitals';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {Provider} from 'react-redux'
-import { configureStore } from '@reduxjs/toolkit';
-import  userReducer from './features/user';
+import {Provider, } from 'react-redux'
+import {createStore, combineReducers} from 'redux'
+import userReducer from './features/users/reducer';
+import thunk from 'redux-thunk'
+import {applyMiddleware} from 'redux'
+import {composeWithDevTools} from 'redux-devtools-extension'
 
+const rootReducer = combineReducers({
+  user:userReducer,
+})
 
-const store = configureStore({
-  reducer:{
-    user:userReducer,
-  }
-});
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+)
+
 
 ReactDOM.render(
   <React.StrictMode>

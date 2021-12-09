@@ -12,13 +12,13 @@ function Category() {
 		loading: true,
 		products: null,
 		});
-		useEffect(() => {
-			axiosInstance.get('product/').then((res) => {
-				const allData = res.data;
-				setAppState({ loading: false, products: allData });
-				// console.log(res.data);
-			});
-		}, [setAppState]);
+    useEffect(() => {
+        axiosInstance.get('product/').then((res) => {
+            const allData = res.data;
+            setAppState({ loading: false, products: allData });
+            // console.log(res.data);
+        });
+    }, [setAppState]);
     return (
         <div>
             <CategoriesHead/>
