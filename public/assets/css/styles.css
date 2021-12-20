@@ -934,6 +934,15 @@ table.table tr th {
 	color:#ffffff;
 	background:#212121;
 }
+.prd_btn_round{
+    background:#ffffff;
+    transition:all ease 0.4s;
+}
+.prd_btn_round:hover{
+    color:#ffffff !important;
+	background:#212121 !important ;
+
+}
 .btn.btn-default{
 	background:#ebedf1;
 }

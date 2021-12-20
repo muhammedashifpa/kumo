@@ -3,6 +3,7 @@ import axiosInstance from '../../../axios';
 import {useDispatch} from 'react-redux'
 import {NavLink,Link,} from "react-router-dom";
 import {logout as logOutReducer} from '../../../features/users/action'
+import favouriteReducer from '../../../features/favourite/reducer'
 
 function ProfileDashbord(props) {
     const dispatch = useDispatch()
@@ -13,7 +14,8 @@ function ProfileDashbord(props) {
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('refresh_token');
 		axiosInstance.defaults.headers['Authorization'] = null;
-		dispatch(logOutReducer())
+		localStorage.removeItem('persist:root')
+		dispatch(favouriteReducer({type: 'LOGOUT'}))
 	}
     return (
         <div className="col-12 col-md-12 col-lg-4 col-xl-4 text-center miliods">

@@ -9,7 +9,7 @@ import SideCart from './randomomponents/SideCart'
 function Modals() {
     return (
         <div>
-            <ProductViewModal />
+            {/* <ProductViewModal /> */}
             <LogInModal/>
             <Search />
             <Wishlist />

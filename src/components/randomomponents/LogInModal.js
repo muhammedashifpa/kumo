@@ -4,6 +4,8 @@ import axiosInstance from '../../axios';
 import {Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {login} from '../../features/users/action'
+import {fetchFav} from '../../features/favourite/action'
+import { fetchCart } from '../../features/cart/action';
 
 
 function closeDialog() {
@@ -49,7 +51,8 @@ function LogInModal(props) {
 				axiosInstance.defaults.headers['Authorization'] =
 					'JWT ' + localStorage.getItem('access_token');
 				dispatch(login())
-				
+				dispatch(fetchFav())
+				dispatch(fetchCart())
 				closeDialog()
 
 			}).catch(function (error) {

@@ -1,6 +1,13 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+import {removeFav} from '../../features/favourite/action'
+import {useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
+
 
 function Wishlist() {
+    const dispatch = useDispatch()
+	const fav = useSelector((state)=>state.fav)
 	function closeWishlist() {
 		document.getElementById("Wishlist").style.display = "none";
 	}
@@ -17,55 +24,30 @@ function Wishlist() {
 						
 						<div className="cart_select_items py-2">
 							{/* <!-- Single Item --> */}
-							<div className="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
+							{fav.items.map((fav)=>{
+								return (
+							<div key={fav.product.id} className="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
 								<div className="cart_single d-flex align-items-center">
 									<div className="cart_selected_single_thumb">
-										<a href="#"><img src="assets/img/product/4.jpg" width="60" className="img-fluid" alt="" /></a>
+										<a href="#"><img src={fav.product.images[0].image} width="60" className="img-fluid" alt="" /></a>
 									</div>
 									<div className="cart_single_caption pl-2">
-										<h4 className="product_title fs-sm ft-medium mb-0 lh-1">Women Striped Shirt Dress</h4>
-										<p className="mb-2"><span className="text-dark ft-medium small">36</span>, <span className="text-dark small">Red</span></p>
-										<h4 className="fs-md ft-medium mb-0 lh-1">$129</h4>
+										<h4 className="product_title fs-sm ft-medium mb-0 lh-1">{fav.product.product_name}</h4>
+										<p className="mb-2"><span className="text-dark ft-medium small">{fav.product.category}</span>, <span className="text-dark small">{fav.product.gender}</span></p>
+										<h4 className="fs-md ft-medium mb-0 lh-1">₹{fav.product.price}</h4>
 									</div>
 								</div>
-								<div className="fls_last"><button className="close_slide gray"><i className="ti-close"></i></button></div>
+								<div className="fls_last"><button onClick={() => dispatch(removeFav(fav.id))} className="close_slide gray"><i className="ti-close"></i></button></div>
 							</div>
-							
-							{/* <!-- Single Item --> */}
-							<div className="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
-								<div className="cart_single d-flex align-items-center">
-									<div className="cart_selected_single_thumb">
-										<a href="#"><img src="assets/img/product/7.jpg" width="60" className="img-fluid" alt="" /></a>
-									</div>
-									<div className="cart_single_caption pl-2">
-										<h4 className="product_title fs-sm ft-medium mb-0 lh-1">Girls Floral Print Jumpsuit</h4>
-										<p className="mb-2"><span className="text-dark ft-medium small">36</span>, <span className="text-dark small">Red</span></p>
-										<h4 className="fs-md ft-medium mb-0 lh-1">$129</h4>
-									</div>
-								</div>
-								<div className="fls_last"><button className="close_slide gray"><i className="ti-close"></i></button></div>
-							</div>
-							
-							{/* <!-- Single Item --> */}
-							<div className="d-flex align-items-center justify-content-between px-3 py-3">
-								<div className="cart_single d-flex align-items-center">
-									<div className="cart_selected_single_thumb">
-										<a href="#"><img src="assets/img/product/8.jpg" width="60" className="img-fluid" alt="" /></a>
-									</div>
-									<div className="cart_single_caption pl-2">
-										<h4 className="product_title fs-sm ft-medium mb-0 lh-1">Girls Solid A-Line Dress</h4>
-										<p className="mb-2"><span className="text-dark ft-medium small">30</span>, <span className="text-dark small">Blue</span></p>
-										<h4 className="fs-md ft-medium mb-0 lh-1">$100</h4>
-									</div>
-								</div>
-								<div className="fls_last"><button className="close_slide gray"><i className="ti-close"></i></button></div>
-							</div>
+								)
+							})}
+
 							
 						</div>
 						
 						<div className="d-flex align-items-center justify-content-between br-top br-bottom px-3 py-3">
 							<h6 className="mb-0">Subtotal</h6>
-							<h3 className="mb-0 ft-medium">$417</h3>
+							<h3 className="mb-0 ft-medium">₹{fav.subtotal}</h3>
 						</div>
 						
 						<div className="cart_action px-3 py-3">
@@ -73,7 +55,8 @@ function Wishlist() {
 								<button type="button" className="btn d-block full-width btn-dark">Move To Cart</button>
 							</div>
 							<div className="form-group">
-								<button type="button" className="btn d-block full-width btn-dark-light">Edit or View</button>
+								<Link to="/my-account/wishlist" onClick={closeWishlist}  className="btn d-block full-width btn-dark-light">Edit or View</Link>
+								{/* <button type="button" className="btn d-block full-width btn-dark-light">Edit or View</button> */}
 							</div>
 						</div>
 						

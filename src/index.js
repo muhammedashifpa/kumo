@@ -5,25 +5,45 @@ import './index.css';
 import App from './App';
 import {Provider, } from 'react-redux'
 import {createStore, combineReducers} from 'redux'
-import userReducer from './features/users/reducer';
 import thunk from 'redux-thunk'
 import {applyMiddleware} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
+import userReducer from './features/users/reducer';
+import favouriteReducer from './features/favourite/reducer'
+import cartReducer from './features/cart/reducer'
+import { persistStore, persistReducer,persistCombineReducers } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import { PersistGate } from 'redux-persist/integration/react'
+
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  // blacklist: ['fav','user'],
+}
+
 
 const rootReducer = combineReducers({
   user:userReducer,
+  fav:favouriteReducer,
+  cart:cartReducer,
 })
 
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 const store = createStore(
-  rootReducer,
+  persistedReducer,
   composeWithDevTools(applyMiddleware(thunk))
 )
 
+const persistor = persistStore(store)
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

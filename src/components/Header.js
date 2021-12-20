@@ -5,15 +5,22 @@ import {useSelector} from 'react-redux'
 
 function Header(props) {
     const user = useSelector((state)=>state.user)
+    const fav = useSelector((state)=>state.fav)
+    const cart = useSelector((state)=>state.cart)
     
-    function openSearch() {
+    function openSearch(event) {
         document.getElementById("Search").style.display = "block";
+        event.preventDefault()
+
     }
-    function openCart() {
+    function openCart(event) {
         document.getElementById("Cart").style.display = "block";
+        event.preventDefault()
+
     }
-    function openWishlist() {
+    function openWishlist(event) {
         document.getElementById("Wishlist").style.display = "block";
+        event.preventDefault()
     }
 
     return (
@@ -85,6 +92,7 @@ function Header(props) {
                                 <ul className="nav-dropdown nav-submenu">
                                     <li><Link to="/product">ProductDetail</Link></li>
                                     <li><Link to="/cart">Cart</Link></li>
+                                    <li><Link to="/favourite">fav</Link></li>
                                     <li><Link to="/checkout">Checkout</Link></li>
                                     <li><Link to="/order-complete">Order-complete</Link></li>
                                     <li><Link to="/my-account/my-profile">MyAccount</Link></li>
@@ -114,8 +122,8 @@ function Header(props) {
 
                             </li>
                             <li>
-                                {user.auth ?<a href="#" onClick={openWishlist}>
-                                                        <i className="lni lni-heart"></i><span className="dn-counter">3</span>
+                                {user.auth ?<a href="#" onClick={openWishlist }>
+                                                        <i className="lni lni-heart"></i><span className="dn-counter">{fav.count}</span>
                                                     </a>
                                                     :
                                                     <a href="#" data-toggle="modal" data-target="#login">
@@ -126,7 +134,7 @@ function Header(props) {
                             </li>
                             <li>
                                 {user.auth ?<a href="#" onClick={openCart}>
-                                                        <i className="lni lni-shopping-basket"></i><span className="dn-counter">3</span>
+                                                        <i className="lni lni-shopping-basket"></i><span className="dn-counter">{cart.count}</span>
                                                     </a>
                                                     :
                                                     <a href="#" data-toggle="modal" data-target="#login">

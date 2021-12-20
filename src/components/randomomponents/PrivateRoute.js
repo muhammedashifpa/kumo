@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux'
 
 
 function PrivateRoute({ children }) {
-    const user = useSelector((state)=>state.user.value)
+    const user = useSelector((state)=>state.user)
     return user.auth ?children  : <Navigate to="/accounts/login" />
 }
 

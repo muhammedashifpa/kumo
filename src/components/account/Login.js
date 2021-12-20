@@ -5,17 +5,20 @@ import {Link} from 'react-router-dom'
 import jwt_decode from "jwt-decode";
 import {useDispatch,useSelector} from 'react-redux'
 import {login as loginReducer} from '../../features/users/action'
+import {fetchFav} from '../../features/favourite/action'
+import { fetchCart } from '../../features/cart/action';
+
 
 
 
 function Login(props) {
     const user = useSelector((state)=>state.user)
+	console.log(user.auth)
     const dispatch = useDispatch()
-
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (user.auth){
-			navigate(-1);
+			navigate('/');
 			console.log('navigated to home')
 		}
 	})
@@ -54,11 +57,13 @@ function Login(props) {
 				localStorage.setItem('refresh_token', res.data.refresh);
 				axiosInstance.defaults.headers['Authorization'] =
 					'JWT ' + localStorage.getItem('access_token');
-				navigate(-1);
-				const token = res.data.access;
-				const user = jwt_decode(token);
-				console.log(user);
 				dispatch(loginReducer())
+				dispatch(fetchFav())
+				dispatch(fetchCart())
+				// navigate(-1);
+				// const token = res.data.access;
+				// const user = jwt_decode(token);
+				// console.log(user);
 
 			}).catch(function (error) {
 				if (error.response) {

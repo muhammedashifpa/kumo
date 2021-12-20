@@ -6,6 +6,7 @@ import Wishlist from "./components/myAccount/myAccountComponents/WishList"
 import MyOrder from "./components/myAccount/myAccountComponents/MyOrder"
 import Address from "./components/myAccount/myAccountComponents/Address"
 import AddCard from "./components/myAccount/myAccountComponents/AddCard"
+import Favourite from "./components/favourite/Favourite"
 import CompleateOrder from './components/compleateOrder/CompleteOrder';
 import ProductDetail from "./components/productdetails/ProductDetail";
 import PrivateRoute from "./components/randomomponents/PrivateRoute"
@@ -51,6 +52,7 @@ function App() {
                 </Route>
                 <Route path="category" element={<Category />} />
                 <Route path="product/:slug" element={<ProductDetail />} />
+                <Route path="favourite" element={<PrivateRoute><Favourite /></PrivateRoute>} />
                 <Route path="cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
                 <Route path="checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
                 <Route path="order-complete" element={<PrivateRoute><CompleateOrder /></PrivateRoute>} />

@@ -2,7 +2,8 @@ import jwt_decode from "jwt-decode";
 
 const initialData = {
     auth:false,
-    username:null
+    username:null,
+    user_id:null,
 }
 
 const userReducer = (state = initialData,action)=>{
@@ -11,12 +12,13 @@ const userReducer = (state = initialData,action)=>{
         case 'LOGIN':
             return {
                 ...state,
-                auth:token ? true: false,
-                username:jwt_decode(token).user
+                auth: true,
+                username:jwt_decode(token).user,
+                user_id:jwt_decode(token).user_id,
             }
         case 'LOGOUT':
             return {
-                auth:token ? true: false,
+                auth:false,
                 username:null
             }
         default:
