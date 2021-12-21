@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux'
 import { Link } from "react-router-dom";
 import  {removeFav} from "../../../features/favourite/action"
 import {useDispatch} from 'react-redux'
+import {addValueToViewModel} from '../../../features/productViewModle/action'
 
 
 
@@ -45,7 +46,7 @@ function WishList() {
                                                     <div className="group_btn">
 												        <Link to={'/product/'+product.product.slug} className="prd_btn_square " data-toggle="tooltip" data-placement="top" title="View"><i className="ti-fullscreen"></i></Link>
 												        {/* <Link to={'/product/'+product.product.slug} className="prd_btn_square" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i className="lni lni-shopping-basket"></i></Link> */}
-												        <a href="#" data-toggle="modal" data-target="#quickview" className="prd_btn_square"  title="Add To Cart"><i className="lni lni-shopping-basket"></i></a>
+												        <a onClick={()=> dispatch(addValueToViewModel(product.product))} href="#" data-toggle="modal" data-target="#quickview" className="prd_btn_square"  title="Add To Cart"><i className="lni lni-shopping-basket"></i></a>
 
                                                     </div>
                                                 </div>

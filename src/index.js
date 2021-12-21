@@ -15,6 +15,7 @@ import { persistStore, persistReducer,persistCombineReducers } from 'redux-persi
 import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react'
 import snackbarReducer from "./features/ducks/snackbar";
+import ProductViewModalReducer from "./features/productViewModle/reducer"
 
 const persistConfig = {
   key: 'root',
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   fav:favouriteReducer,
   cart:cartReducer,
   snackbar: snackbarReducer,
+  pvmr: ProductViewModalReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

@@ -55,7 +55,7 @@ function SideCart() {
 						
 						<div className="cart_action px-3 py-3">
 							<div className="form-group">
-								<button type="button" className="btn d-block full-width btn-dark">Checkout Now</button>
+								<Link to={'checkout'} onClick={closeCart} className="btn d-block full-width btn-dark">Checkout Now</Link>
 							</div>
 							<div className="form-group">
 								{/* <button type="button" className="btn d-block full-width btn-dark-light">Edit or View</button> */}

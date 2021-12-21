@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import {addFav,removeFav} from '../../../../features/favourite/action'
 import {useDispatch} from 'react-redux'
 import { useSelector } from 'react-redux';
+import {addValueToViewModel} from '../../../../features/productViewModle/action'
 
 
 function Grid4(props) {
@@ -29,7 +30,7 @@ function Grid4(props) {
 											<div className="group_btn">
 												<Link to={'/product/'+product.slug} className="prd_btn_square " data-toggle="tooltip" data-placement="top" title="View"><i className="ti-fullscreen"></i></Link>
 												<div onClick={() => dispatch(addFav(product.id,user.user_id))} className="prd_btn_square snackbar-wishlist" data-toggle="tooltip" data-placement="top" title="Wishlist"><i className="lni lni-heart"></i></div>
-												<a href="#" data-toggle="modal" data-target="#quickview" className="prd_btn_square"  title="Add To Cart"><i className="lni lni-shopping-basket"></i></a>
+												<a href="#" onClick={()=> dispatch(addValueToViewModel(product))} data-toggle="modal" data-target="#quickview" className="prd_btn_square"  title="Add To Cart"><i className="lni lni-shopping-basket"></i></a>
 											</div>
 										</div>
 									</div>

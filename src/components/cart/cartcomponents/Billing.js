@@ -1,4 +1,6 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+
 
 function Billing() {
     return (
@@ -22,11 +24,11 @@ function Billing() {
           </div>
         </div>
         
-        <a className="btn btn-block btn-dark mb-3" href="checkout.html">Proceed to Checkout</a>
+        <Link to={'/checkout'} className="btn btn-block btn-dark mb-3" href="checkout.html">Proceed to Checkout</Link>
         
-        <a className="btn-link text-dark ft-medium" href="shop.html">
+        <Link to={'/category'} className="btn-link text-dark ft-medium">
           <i className="ti-back-left mr-2"></i> Continue Shopping
-        </a>
+        </Link>
     </div>
     )
 }

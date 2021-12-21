@@ -51,9 +51,9 @@ function Wishlist() {
 						</div>
 						
 						<div className="cart_action px-3 py-3">
-							<div className="form-group">
+							{/* <div className="form-group">
 								<button type="button" className="btn d-block full-width btn-dark">Move To Cart</button>
-							</div>
+							</div> */}
 							<div className="form-group">
 								<Link to="/my-account/wishlist" onClick={closeWishlist}  className="btn d-block full-width btn-dark-light">Edit or View</Link>
 								{/* <button type="button" className="btn d-block full-width btn-dark-light">Edit or View</button> */}

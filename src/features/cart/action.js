@@ -24,7 +24,7 @@ export const fetchCart =()=>{
 export const addCart = (p_id,u_id,size,count) =>{
     return async(dispatch,getState) => {
 
-        // console.log('add cart working','p_id : ', p_id,'u_id : ', u_id,'size : ',size,'count : ',count)
+        console.log('add cart working','p_id : ', p_id,'u_id : ', u_id,'size : ',size,'count : ',count)
         try{
             const response = await axiosInstance.post('cart/',{
                 product:p_id,
