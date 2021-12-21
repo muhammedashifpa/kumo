@@ -14,7 +14,7 @@ import cartReducer from './features/cart/reducer'
 import { persistStore, persistReducer,persistCombineReducers } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react'
-
+import snackbarReducer from "./features/ducks/snackbar";
 
 const persistConfig = {
   key: 'root',
@@ -27,6 +27,7 @@ const rootReducer = combineReducers({
   user:userReducer,
   fav:favouriteReducer,
   cart:cartReducer,
+  snackbar: snackbarReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -42,7 +43,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <App />
+          <App />
       </PersistGate>
     </Provider>
   </React.StrictMode>,

@@ -10,6 +10,7 @@ import Favourite from "./components/favourite/Favourite"
 import CompleateOrder from './components/compleateOrder/CompleteOrder';
 import ProductDetail from "./components/productdetails/ProductDetail";
 import PrivateRoute from "./components/randomomponents/PrivateRoute"
+import Snackbar from "./components/randomomponents/Snackbar"
 import ScrollToTop from "./components/randomomponents/ScrollToTop";
 import PageNotFound404 from './components/404/PageNotFound404'
 import MyAccount from './components/myAccount/MyAccount'
@@ -22,6 +23,7 @@ import Home from './components/home/Home'
 import Modals from './components/Modals'
 import Header from './components/Header'
 import Footer from './components/Footer'
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -68,6 +70,7 @@ function App() {
                     <Route path="payment-methode/add-card" element={<AddCard/>}/>
                 </Route>
             </Routes>
+            <Snackbar/>
             <Footer/>
             <Modals/>
         </Router>

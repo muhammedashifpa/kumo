@@ -1,11 +1,13 @@
 import React from 'react'
 import Billing from './Billing'
 import {useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
+import {removeCart} from '../../../features/cart/action'
 
 
 function ProductList() {
+    const dispatch = useDispatch()
 	const products = useSelector((state)=>state.cart)
-	console.log(products,'The is porduct view')
 	if (products.items.length === 0 || !products) {
 		return(
 			<section className="middle">
@@ -39,31 +41,36 @@ function ProductList() {
 					<div className="row justify-content-between">
 						<div className="col-12 col-lg-7 col-md-12">
 							<ul className="list-group list-group-sm list-group-flush-y list-group-flush-x mb-4">
-									
+							{
+								products.items.map((product)=>{
+									return(
 								<li className="list-group-item">
 									<div className="row align-items-center">
 										<div className="col-3">
 											{/* <!-- Image --> */}
-											<a href="product.html"><img src="assets/img/product/7-a.jpg" alt="..." className="img-fluid"/></a>
+											<a href="product.html"><img src={product.product.images[0].image} alt="..." className="img-fluid"/></a>
 										</div>
 										<div className="col d-flex align-items-center justify-content-between">
 											<div className="cart_single_caption pl-2">
-												<h4 className="product_title fs-md ft-medium mb-1 lh-1">Women Striped Shirt Dress</h4>
-												<p className="mb-1 lh-1"><span className="text-dark">Size: 40</span></p>
-												<p className="mb-3 lh-1"><span className="text-dark">Color: Blue</span></p>
-												<h4 className="fs-md ft-medium mb-3 lh-1">$129</h4>
-												<select className="mb-2 custom-select w-auto">
-												  <option value="1" selected="">1</option>
+												<h4 className="product_title fs-md ft-medium mb-1 lh-1">{product.product.product_name}</h4>
+												<p className="mb-3 lh-1"><span className="text-dark">Size: {product.size}</span></p>
+												{/* <p className="mb-3 lh-1"><span className="text-dark">Color: Blue</span></p> */}
+												<h4 className="fs-md ft-medium mb-3 lh-1">₹{product.product.price}</h4>
+												<select className="mb-2 custom-select w-auto" defaultValue={product.count}>
+												  <option value="1">1</option>
 												  <option value="2">2</option>
 												  <option value="3">3</option>
 												  <option value="4">4</option>
 												  <option value="5">5</option>
 												</select>
 											</div>
-											<div className="fls_last"><button className="close_slide gray"><i className="ti-close"></i></button></div>
+											<div className="fls_last"><button onClick={() => dispatch(removeCart(product.id))} className="close_slide gray"><i className="ti-close"></i></button></div>
 										</div>
 									</div>
 								</li>
+									)
+								})
+							}
 								
 							</ul>
 							

@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 function Hero() {
     return (
@@ -20,8 +21,7 @@ function Hero() {
 											<h1 className="mb-1 ft-bold lg-heading">New Winter<br/>Collections 2021</h1>
 											<span className="trending">There's nothing like trend</span>
 										</div>
-
-										<a href="#" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></a>
+										<Link to="/category" href="#" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></Link>
 									</div>
 									{/* <!-- Slide Title / End --> */}
 
@@ -46,7 +46,7 @@ function Hero() {
 											<span className="trending">There's nothing like trend</span>
 										</div>
 
-										<a href="#" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></a>
+										<Link to="/category" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></Link>
 									</div>
 									{/* <!-- Slide Title / End --> */}
 
@@ -71,7 +71,7 @@ function Hero() {
 											<span className="trending">There's nothing like trend</span>
 										</div>
 
-										<a href="#" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></a>
+										<Link to="/category" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></Link>
 									</div>
 									{/* <!-- Slide Title / End --> */}
 

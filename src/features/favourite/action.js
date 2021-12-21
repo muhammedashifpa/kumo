@@ -1,4 +1,5 @@
 import axiosInstance from '../../axios'
+import {setSnackbar} from '../ducks/snackbar'
 
 
 
@@ -28,10 +29,24 @@ export const addFav = (p_id,u_id) =>{
             })
             if(response.data['message']=='success'){
                 console.log('success')
+                dispatch(
+                    setSnackbar(
+                      true,
+                      "success",
+                      "Item Added to favourites!"
+                    )
+                  )
                 dispatch(fetchFav())
             }
         }catch(err){
             console.log('add fav error ***********',err)
+            dispatch(
+                setSnackbar(
+                  true,
+                  "error",
+                  "Sorry, somthing wrong"
+                )
+              )
         }
     }
 }    
@@ -42,10 +57,24 @@ export const removeFav = (f_id) =>{
             const response = await axiosInstance.delete('favourite/'+f_id+'/')
             if(response.data['message']=='delete success'){
                 console.log('delete success')
+                dispatch(
+                    setSnackbar(
+                      true,
+                      "success",
+                      "Item removed from favourites!"
+                    )
+                  )
                 dispatch(fetchFav())
             }
         }catch(err){
             console.log('add fav error ***********',err)
+            dispatch(
+                setSnackbar(
+                  true,
+                  "error",
+                  "Sorry, somthing wrong"
+                )
+              )
         }
     }
 }    

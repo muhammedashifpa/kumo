@@ -43,11 +43,9 @@ function WishList() {
 										<a className={"card-img-top d-block overflow-hidden ovr-show"} href="shop-single-v1.html"><img className="card-img-top" src={product.product.images[1].image} alt="..."/></a>
                                                 <div className="product-hover-overlay btn d-flex align-items-center justify-content-center">
                                                     <div className="group_btn">
-                                                        <a href="#" data-toggle="modal" data-target="#quickview" className="prd_btn_square"><i className="ti-fullscreen"></i></a>
-                                                        <a href="" className="prd_btn_square" data-toggle="tooltip" data-placement="top" title="Wishlist"><i className="lni lni-heart"></i></a>
-                                                        {/* <a href="" className="prd_btn_square" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i className="lni lni-shopping-basket"></i></a> */}
-                                                        {/* <a href="" className="prd_btn_square" data-toggle="tooltip" data-placement="top" title="Compare"><i className="lni lni-shuffle"></i></a> */}
-												        <Link to={'/product/'+product.product.slug} className="prd_btn_square" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i className="lni lni-shopping-basket"></i></Link>
+												        <Link to={'/product/'+product.product.slug} className="prd_btn_square " data-toggle="tooltip" data-placement="top" title="View"><i className="ti-fullscreen"></i></Link>
+												        {/* <Link to={'/product/'+product.product.slug} className="prd_btn_square" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i className="lni lni-shopping-basket"></i></Link> */}
+												        <a href="#" data-toggle="modal" data-target="#quickview" className="prd_btn_square"  title="Add To Cart"><i className="lni lni-shopping-basket"></i></a>
 
                                                     </div>
                                                 </div>

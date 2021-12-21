@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import $ from 'jquery';
 import { addCart } from '../../../features/cart/action';
 import {useDispatch,useSelector} from 'react-redux'
+import {addFav,removeFav} from '../../../features/favourite/action'
+
+
 
 
 function FullView(props) {
@@ -295,7 +298,7 @@ function FullView(props) {
 							<div className="prd_details">
 								<div className="prt_01 mb-1"><span className="text-purple bg-light-purple rounded py-1">{data.category}</span></div>
 								<div className="prt_02 mb-3">
-									<h2 className="ft-bold mb-1">{data.product_name}</h2>
+									<h2 className="ft-bold mb-1" >{data.product_name}</h2>
 									<div className="text-left">
 										<div className="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
 											<i className="fas fa-star filled"></i>
@@ -396,13 +399,13 @@ function FullView(props) {
 										</div>
 										<div className="col-12 col-lg">
 											{/* <!-- Submit --> */}
-											<button type="submit" onClick={() => dispatch(addCart(data.id,user.user_id,value.size,value.count))} className="btn btn-block custom-height bg-dark mb-2">
+											<button type="submit" onClick={() => dispatch(addCart(data.id,user.user_id,value.size,value.count)) } className="btn btn-block custom-height bg-dark mb-2">
 												<i className="lni lni-shopping-basket mr-2"></i>Add to Cart 
 											</button>
 										</div>
 										<div className="col-12 col-lg-auto">
 											{/* <!-- Wishlist --> */}
-											<button className="btn custom-height btn-default btn-block mb-2 text-dark" data-toggle="button">
+											<button onClick={() => dispatch(addFav(data.id,user.user_id))} className="btn custom-height btn-default btn-block mb-2 text-dark" data-toggle="button">
 												<i className="lni lni-heart mr-2"></i>Wishlist
 											</button>
 										</div>

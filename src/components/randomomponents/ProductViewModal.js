@@ -2,8 +2,6 @@ import React from 'react'
 
 function ProductViewModal() {
     return (
-        <div>
-            			{/* <!-- Product View Modal --> */}
 			<div className="modal fade lg-modal" id="quickview" tabIndex="-1" role="dialog" aria-labelledby="quickviewmodal" aria-hidden="true">
 				<div className="modal-dialog modal-xl login-pop-form" role="document">
 					<div className="modal-content" id="quickviewmodal">
@@ -82,32 +80,32 @@ function ProductViewModal() {
 											<p className="d-flex align-items-center mb-0 text-dark ft-medium">Size:</p>
 											<div className="text-left pb-0 pt-2">
 												<div className="form-check size-option form-option form-check-inline mb-2">
-													<input className="form-check-input" type="radio" name="size" id="28" checked/>
-													<label className="form-option-label" htmlFor="28">28</label>
+													<input className="form-check-input" type="radio" name="Vsize" id="V28"/>
+													<label className="form-option-label" htmlFor="V28">28</label>
 												</div>
 												<div className="form-check form-option size-option  form-check-inline mb-2">
-													<input className="form-check-input" type="radio" name="size" id="30"/>
-													<label className="form-option-label" htmlFor="30">30</label>
+													<input className="form-check-input" type="radio" name="Vsize" id="V30"/>
+													<label className="form-option-label" htmlFor="V30">30</label>
 												</div>
 												<div className="form-check form-option size-option  form-check-inline mb-2">
-													<input className="form-check-input" type="radio" name="size" id="32"/>
-													<label className="form-option-label" htmlFor="32">32</label>
+													<input className="form-check-input" type="radio" name="Vsize" id="V32"/>
+													<label className="form-option-label" htmlFor="V32">32</label>
 												</div>
 												<div className="form-check form-option size-option  form-check-inline mb-2">
-													<input className="form-check-input" type="radio" name="size" id="34"/>
-													<label className="form-option-label" htmlFor="34">34</label>
+													<input className="form-check-input" type="radio" name="Vsize" id="34"/>
+													<label className="form-option-label" htmlFor="V34">34</label>
 												</div>
 												<div className="form-check form-option size-option  form-check-inline mb-2">
-													<input className="form-check-input" type="radio" name="size" id="36"/>
-													<label className="form-option-label" htmlFor="36">36</label>
+													<input className="form-check-input" type="radio" name="Vsize" id="V36"/>
+													<label className="form-option-label" htmlFor="V36">36</label>
 												</div>
 												<div className="form-check form-option size-option  form-check-inline mb-2">
-													<input className="form-check-input" type="radio" name="size" id="38"/>
-													<label className="form-option-label" htmlFor="38">38</label>
+													<input className="form-check-input" type="radio" name="Vsize" id="V38"/>
+													<label className="form-option-label" htmlFor="V38">38</label>
 												</div>
 												<div className="form-check form-option size-option  form-check-inline mb-2">
-													<input className="form-check-input" type="radio" name="size" id="40"/>
-													<label className="form-option-label" htmlFor="40">40</label>
+													<input className="form-check-input" type="radio" name="Vsize" id="V40"/>
+													<label className="form-option-label" htmlFor="V40">40</label>
 												</div>
 											</div>
 										</div>
@@ -161,8 +159,6 @@ function ProductViewModal() {
 					</div>
 				</div>
 			</div>
-			{/* <!-- End Modal --> */}
-        </div>
     )
 }
 

@@ -33,7 +33,7 @@ function SideCart() {
 							<div key={single.id} className="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
 								<div className="cart_single d-flex align-items-center">
 									<div className="cart_selected_single_thumb">
-										<a href="#"><img src={single.product.images[0].image} width="60" className="img-fluid" alt="" /></a>
+										<Link to={'/product/'+single.product.slug}  onClick={closeCart}><img src={single.product.images[0].image} width="60" className="img-fluid" alt="" /></Link>
 									</div>
 									<div className="cart_single_caption pl-2">
 										<h4 className="product_title fs-sm ft-medium mb-0 lh-1">{single.product.product_name}</h4>

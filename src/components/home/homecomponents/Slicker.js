@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import styled from 'styled-components';
+import {Link} from 'react-router-dom'
 
 function Slicker() {
     var settings = {
@@ -33,7 +34,7 @@ function Slicker() {
                           <span className="trending">There's nothing like trend</span>
                         </div>
 
-                        <a href="#" className="btn stretched-link borders" >Shop Now<i className="lni lni-arrow-right ml-2"></i></a>
+                        <Link to="/category" className="btn stretched-link borders" >Shop Now<i className="lni lni-arrow-right ml-2"></i></Link>
                       </div>
                       {/* <!-- Slide Title / End --> */}
 
@@ -59,7 +60,7 @@ function Slicker() {
                           <span className="trending">There's nothing like trend</span>
                         </div>
 
-                        <a href="#" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></a>
+                        <Link to="/category" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></Link>
                       </div>
                       {/* <!-- Slide Title / End --> */}
 
@@ -84,7 +85,7 @@ function Slicker() {
                               <span className="trending">There's nothing like trend</span>
                             </div>
 
-                            <a href="#" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></a>
+                            <Link to="/category" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></Link>
                           </div>
                           {/* <!-- Slide Title / End --> */}
 
