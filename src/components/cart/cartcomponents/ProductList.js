@@ -1,8 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Billing from './Billing'
 import {useSelector} from 'react-redux'
 import {useDispatch} from 'react-redux'
-import {removeCart} from '../../../features/cart/action'
+import {removeCart,patchCart} from '../../../features/cart/action'
 
 
 function ProductList() {
@@ -44,7 +44,7 @@ function ProductList() {
 							{
 								products.items.map((product)=>{
 									return(
-								<li className="list-group-item">
+								<li className="list-group-item" key={product.id}>
 									<div className="row align-items-center">
 										<div className="col-3">
 											{/* <!-- Image --> */}
@@ -56,7 +56,8 @@ function ProductList() {
 												<p className="mb-3 lh-1"><span className="text-dark">Size: {product.size}</span></p>
 												{/* <p className="mb-3 lh-1"><span className="text-dark">Color: Blue</span></p> */}
 												<h4 className="fs-md ft-medium mb-3 lh-1">₹{product.product.price}</h4>
-												<select className="mb-2 custom-select w-auto" defaultValue={product.count}>
+												{/* <select onChange={(e)=>console.log(e.target.value)} className="mb-2 custom-select w-auto" defaultValue={product.count}> */}
+												<select onChange={(e)=>dispatch(patchCart(product.id,e.target.value))} className="mb-2 custom-select w-auto" defaultValue={product.count}>
 												  <option value="1">1</option>
 												  <option value="2">2</option>
 												  <option value="3">3</option>

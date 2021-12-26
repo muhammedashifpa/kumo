@@ -6,6 +6,7 @@ import {setSnackbar} from '../ducks/snackbar'
 
 
 export const fetchCart =()=>{
+    console.log('Fetching Cart working...')
     return async(dispatch,getState) =>{
         try{
             const response = await axiosInstance.get('cart/')
@@ -23,7 +24,6 @@ export const fetchCart =()=>{
 
 export const addCart = (p_id,u_id,size,count) =>{
     return async(dispatch,getState) => {
-
         console.log('add cart working','p_id : ', p_id,'u_id : ', u_id,'size : ',size,'count : ',count)
         try{
             const response = await axiosInstance.post('cart/',{
@@ -86,3 +86,32 @@ export const removeCart = (c_id) =>{
     }
 }
  
+export const patchCart = (c_id,count) =>{
+    console.log(c_id,count)
+    return async(dispatch,getState)=>{
+        try{
+            const response = await axiosInstance.patch('cart/'+c_id+'/',{count:count})
+            if(response.data['message']=='success'){
+                console.log('partial upadate success')
+                dispatch(
+                    setSnackbar(
+                      true,
+                      "success",
+                      "Item updated!"
+                    )
+                  )
+                dispatch(fetchCart())
+            }
+        }
+        catch(err){
+            console.log('error on update ***********',err)
+            dispatch(
+                setSnackbar(
+                  true,
+                  "error",
+                  "Sorry, somthing wrong"
+                )
+              )
+        }
+    }
+}
