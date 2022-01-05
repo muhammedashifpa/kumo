@@ -3,7 +3,16 @@ import {setSnackbar} from '../ducks/snackbar'
  
 
 
-
+export const setSet =()=> {
+    return (dispatch)=> {
+        console.log('**********************')
+        dispatch(setSnackbar(
+            true,
+            "success",
+            "Item Added to favourites!"
+          ))
+    }
+}
 
 export const fetchCart =()=>{
     console.log('Fetching Cart working...')

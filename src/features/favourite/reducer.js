@@ -21,7 +21,7 @@ const favouriteReducer = (state = initialData, action) =>{
                 count:Object.keys(action.payload).length,
                 items:action.payload,
                 subtotal:action.payload.map((item)=>{
-                                return item.product.price
+                                return item.product.offer_price
                             }).reduce((acc, item)=>{
                                 return acc + item
                             })

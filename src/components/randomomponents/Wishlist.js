@@ -34,7 +34,7 @@ function Wishlist() {
 									<div className="cart_single_caption pl-2">
 										<h4 className="product_title fs-sm ft-medium mb-0 lh-1">{fav.product.product_name}</h4>
 										<p className="mb-2"><span className="text-dark ft-medium small">{fav.product.category}</span>, <span className="text-dark small">{fav.product.gender}</span></p>
-										<h4 className="fs-md ft-medium mb-0 lh-1">₹{fav.product.price}</h4>
+										<h4 className="fs-md ft-medium mb-0 lh-1">₹{fav.product.offer_price}</h4>
 									</div>
 								</div>
 								<div className="fls_last"><button onClick={() => dispatch(removeFav(fav.id))} className="close_slide gray"><i className="ti-close"></i></button></div>

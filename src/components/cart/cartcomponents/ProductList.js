@@ -27,18 +27,18 @@ function ProductList() {
 		)
 	}	
     return (
-        <section className="middle">
-				<div className="container">
+        // <section className="middle">
+		// 		<div className="container">
 				
-					<div className="row">
-						<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-							<div className="text-center d-block mb-5">
-								<h2>Shopping Cart</h2>
-							</div>
-						</div>
-					</div>
+		// 			<div className="row">
+		// 				<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+		// 					<div className="text-center d-block mb-5">
+		// 						<h2>Shopping Cart</h2>
+		// 					</div>
+		// 				</div>
+		// 			</div>
 					
-					<div className="row justify-content-between">
+		// 			<div className="row justify-content-between">
 						<div className="col-12 col-lg-7 col-md-12">
 							<ul className="list-group list-group-sm list-group-flush-y list-group-flush-x mb-4">
 							{
@@ -75,9 +75,9 @@ function ProductList() {
 								
 							</ul>
 							
-							<div className="row align-items-end justify-content-between mb-10 mb-md-0">
+							{/* <div className="row align-items-end justify-content-between mb-10 mb-md-0">
 								<div className="col-12 col-md-7">
-									{/* <!-- Coupon --> */}
+									<!-- Coupon -->
 									<form className="mb-7 mb-md-0">
 										<label className="fs-sm ft-medium text-dark">Coupon code:</label>
 										<div className="row form-row">
@@ -93,15 +93,15 @@ function ProductList() {
 								<div className="col-12 col-md-auto mfliud">
 									<button className="btn stretched-link borders">Update Cart</button>
 								</div>
-							</div>
-						</div>
+							</div> */}
+						 </div>
 						
-					<Billing />
+			// 		 <Billing />
 						
-					</div>
+			// 		</div>
 					
-				</div>
-			</section>
+			// 	</div>
+			// </section> 
     )
 }
 

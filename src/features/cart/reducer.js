@@ -24,24 +24,24 @@ const cartReducer = (state = initialData, action) =>{
                 }),
                 items:action.payload,
                 subtotal:action.payload.map((item)=>{
-                                return item.product.price * item.count
+                                return item.product.offer_price * item.count
                             }).reduce((acc, item)=>{
                                 return acc + item
                             }),
 
                 tax:((action.payload.map((item)=>{
-                            return item.product.price * item.count
+                            return item.product.offer_price * item.count
                         }).reduce((acc, item)=>{
                             return acc + item
                         })/100)*10).toFixed(2),
                         
                         
                 total:((action.payload.map((item)=>{
-                                return item.product.price * item.count
+                                return item.product.offer_price * item.count
                             }).reduce((acc, item)=>{
                                 return acc + item
                             })/100)*10)+(action.payload.map((item)=>{
-                                return item.product.price * item.count
+                                return item.product.offer_price * item.count
                             }).reduce((acc, item)=>{
                                 return acc + item
                             })),

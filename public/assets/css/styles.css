@@ -2934,32 +2934,32 @@ li.login-attri .account-drop a {
     position: relative;
     display: block;
 }
-#payaccordion .panel.panel-default {
+#addressaccordion .panel.panel-default,#payaccordion .panel.panel-default {
     background: #ffffff;
     box-shadow: none;
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 20px;
 }
-#payaccordion .panel-default>.panel-heading {
+#addressaccordion .panel-default>.panel-heading,#payaccordion .panel-default>.panel-heading {
     color: #0047ab;
     padding: 14px 15px;
     background-color: #ffffff;
     border-color: #eaeff5;
 }
-#payaccordion .panel-default>.panel-heading h4 {
-    margin: 0;
+#addressaccordion .panel-default>.panel-heading h4,#payaccordion .panel-default>.panel-heading h4 {
+    margin: 0; 
     font-size: 17px;
 }
-#payaccordion .panel-default .panel-body {
+#addressaccordion .panel-default .panel-body,#payaccordion .panel-default .panel-body {
     padding: 1.5rem 2rem;
 }
-#payaccordion .panel-default>.panel-heading h4 a {
+#addressaccordion .panel-default>.panel-heading h4 a,#payaccordion .panel-default>.panel-heading h4 a {
     color: #202738;
     position: relative;
     padding-left: 25px;
 }
-#payaccordion .panel-default>.panel-heading h4 a:before {
+#addressaccordion .panel-default>.panel-heading h4 a:before,#payaccordion .panel-default>.panel-heading h4 a:before {
     content: "";
     position: absolute;
     width: 18px;
@@ -2975,7 +2975,7 @@ li.login-attri .account-drop a {
     color: #ffffff;
     transition: all ease 0.4s;
 }
-#payaccordion .panel-default>.panel-heading h4 a[aria-expanded="true"]:before {
+#addressaccordion .panel-default>.panel-heading h4 a[aria-expanded="true"]:before,#payaccordion .panel-default>.panel-heading h4 a[aria-expanded="true"]:before {
     content: "\e64c";
     font-family: 'themify';
     background: #11af6d;
