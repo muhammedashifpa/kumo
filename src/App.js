@@ -13,6 +13,7 @@ import PrivateRoute from "./components/randomomponents/PrivateRoute"
 import Snackbar from "./components/randomomponents/Snackbar"
 import ScrollToTop from "./components/randomomponents/ScrollToTop";
 import PageNotFound404 from './components/404/PageNotFound404'
+import GridItems from './components/category/GridItems'
 import MyAccount from './components/myAccount/MyAccount'
 import Checkout from "./components/checkout/Checkout";
 import Category from './components/category/Category'
@@ -52,7 +53,15 @@ function App() {
                         <Route path="register" element={<Register />} />
                     </Routes>
                 </Route>
-                <Route path="category" element={<Category />} />
+                <Route path="category" >
+                    <Routes>
+                        <Route path=":slug" element={<GridItems/>}/>
+                        <Route path="" element={<Category/>}/>
+                    </Routes>
+                </Route>
+                {/* <Route path="category" element={<Category />} /> */}
+                <Route path="products" element={<GridItems />} />
+                <Route path="products/:slug" element={<GridItems />} />
                 <Route path="product/:slug" element={<ProductDetail />} />
                 <Route path="favourite" element={<PrivateRoute><Favourite /></PrivateRoute>} />
                 <Route path="cart" element={<PrivateRoute><Cart /></PrivateRoute>} />

@@ -69,17 +69,18 @@ function Header(props) {
                     <div className="nav-menus-wrapper" style={{transitionProperty: "none"}}>
                         <ul className="nav-menu">
                         
-                            <li><Link to="/">Home</Link></li>
-                            <li><a href="#">Shop</a>
+                            <li><Link to="/" >Home</Link></li>
+                            <li><a href="#" onClick={(e)=>e.preventDefault()}>Shop</a>
                                 <ul className="nav-dropdown nav-submenu">
-                                    <li><Link to="/category">View All</Link></li>
+                                    <li><Link to="/products">View All</Link></li>
+                                    <li><Link to="/category">Category</Link></li>
                                     <li><a href="">Men</a></li>
                                     <li><a href="">Women</a></li>
                                     <li><Link to="">Kids</Link></li>
                                 </ul>
                             </li>
                             
-                            <li><a href="">Product</a>
+                            <li><a href="" onClick={(e)=>e.preventDefault()}>Product</a>
                                 <ul className="nav-dropdown nav-submenu">
                                     <li><a href="shop-single-v1.html">Product Detail v01</a></li>
                                     <li><a href="shop-single-v2.html">Product Detail v02</a></li>
@@ -88,7 +89,7 @@ function Header(props) {
                                 </ul>
                             </li>
                             
-                            <li><a href="">Pages</a>
+                            <li><a href="" onClick={(e)=>e.preventDefault()}>Pages</a>
                                 <ul className="nav-dropdown nav-submenu">
                                     <li><Link to="/product">ProductDetail</Link></li>
                                     <li><Link to="/cart">Cart</Link></li>
@@ -99,7 +100,7 @@ function Header(props) {
                                 </ul>
                             </li>
                             
-                            <li><a href="docs.html">Docs</a></li>
+                            <li><a href="docs.html"  onClick={(e)=>e.preventDefault()}>Docs</a></li>
                             
                         </ul>
                         
