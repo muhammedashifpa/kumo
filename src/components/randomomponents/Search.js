@@ -1,8 +1,19 @@
-import React from 'react'
-
+import React,{useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+import axiosInstance from '../../axios';
 function Search() {
+	const navigate = useNavigate()
+	const [data,updateData]=useState('')
 	function closeSearch() {
 		document.getElementById("Search").style.display = "none";
+	}
+	const handelSearch =(e)=> {
+		closeSearch();
+		navigate('products/search='+data)
+	}
+	const handleChange = (e)=> {
+		updateData(e.target.value)
+
 	}
     return (
         <div>
@@ -15,25 +26,28 @@ function Search() {
 					</div>
 						
 					<div className="cart_action px-3 py-4">
-						<form className="form m-0 p-0">
+						{/* <form className="form m-0 p-0" onSubmit={handelSearch}> */}
 							<div className="form-group">
-								<input type="text" className="form-control" placeholder="Product Keyword.." />
+								<input list="search-list" onChange={handleChange} type="text" className="form-control" placeholder="Product Keyword.." />
+								<datalist id="search-list">
+									
+								</datalist>
 							</div>
 							
-							<div className="form-group">
-								<select className="custom-select">
+							{/* <div className="form-group">
+								<input className="custom-select">
 								  <option value="1" selected="">Choose Category</option>
 								  <option value="2">Men's Store</option>
 								  <option value="3">Women's Store</option>
 								  <option value="4">Kid's Fashion</option>
 								  <option value="5">Inner Wear</option>
-								</select>
-							</div>
+								</input>
+							</div> */}
 							
 							<div className="form-group mb-0">
-								<button type="button" className="btn d-block full-width btn-dark">Search Product</button>
+								<button type="button" onClick={handelSearch} className="btn d-block full-width btn-dark">Search Product</button>
 							</div>
-						</form>
+						{/* </form> */}
 					</div>
 					
 					<div className="d-flex align-items-center justify-content-center br-top br-bottom py-2 px-3">

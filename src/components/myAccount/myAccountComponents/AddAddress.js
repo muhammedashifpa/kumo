@@ -28,7 +28,6 @@ function AddAddress() {
 			...formData,
 			[e.target.name]: e.target.value
 		})
-		console.log(formData);
 	}
 	const initialErrorData = Object.freeze({
 		user:user,
@@ -58,11 +57,14 @@ function AddAddress() {
 			  )
 			navigate('/my-account/addresses')
 		}).catch((err) => {
-			if (err.response.data){
+			try{
 				updateErrorData({
 					...err.response.data
 				})
+			}catch{
+				console.log(err)
 			}
+				
 			dispatch(
                 setSnackbar(
                   true,
@@ -111,7 +113,8 @@ function AddAddress() {
 									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 										<div className="form-group">
 											<label className="text-dark">Company</label>
-											<input onChange={handleChange} name='company' value={formData.company} type="text" className="form-control" placeholder="Company Name (optional)"/>
+											{errorData.company === undefined ? null : <span className="error_message">{errorData.company}</span>}
+											<input onChange={handleChange} name='company' value={formData.company} type="text" className={"form-control" + (errorData.company === undefined ? "" : " error_form")} placeholder="Company Name (optional)"/>
 										</div>
 									</div>
 									
@@ -126,6 +129,7 @@ function AddAddress() {
 									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 										<div className="form-group">
 											<label className="text-dark">Address 2</label>
+											{errorData.address_2 === undefined ? null : <span className="error_message">{errorData.address_2}</span>}
 											<input onChange={handleChange} name='address_2' value={formData.address_2} type="text" className="form-control" placeholder="Address 2"/>
 										</div>
 									</div>

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import axiosInstance from '../../../axios';
-import {useDispatch} from 'react-redux'
+import {useDispatch,useSelector} from 'react-redux'
 import {NavLink,Link,} from "react-router-dom";
 import {logout as logOutReducer} from '../../../features/users/action'
-import favouriteReducer from '../../../features/favourite/reducer'
 
 function ProfileDashbord(props) {
+	const user = useSelector(state => state.user)
     const dispatch = useDispatch()
 	function logout(){
 		axiosInstance.post('accounts/logout/', {
@@ -15,7 +15,7 @@ function ProfileDashbord(props) {
 		localStorage.removeItem('refresh_token');
 		axiosInstance.defaults.headers['Authorization'] = null;
 		localStorage.removeItem('persist:root')
-		dispatch(favouriteReducer({type: 'LOGOUT'}))
+		dispatch(logOutReducer)
 	}
     return (
         <div className="col-12 col-md-12 col-lg-4 col-xl-4 text-center miliods">
@@ -25,7 +25,7 @@ function ProfileDashbord(props) {
 										<img src="assets/img/team-1.jpg" className="img-fluid circle" width="100" alt="" />
 									</div>
 									<div className="dash_caption">
-										<h4 className="fs-md ft-medium mb-0 lh-1">Adam Wishnoi</h4>
+										<h4 className="fs-md ft-medium mb-0 lh-1">{user.username}</h4>
 										<span className="text-muted smalls">Australia</span>
 									</div>
 								</div>

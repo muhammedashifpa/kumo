@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 import {useSelector} from 'react-redux'
 
 
@@ -7,6 +7,16 @@ function Header(props) {
     const user = useSelector((state)=>state.user)
     const fav = useSelector((state)=>state.fav)
     const cart = useSelector((state)=>state.cart)
+    const [headerClass, updateHeaderClass]= useState('header-transparent')
+    const location = useLocation()
+
+    useEffect(()=>{
+        if (location.pathname === '/' ){
+            updateHeaderClass('header-transparent')
+        }else{
+            updateHeaderClass('')
+        }
+    },[location])
     
     function openSearch(event) {
         document.getElementById("Search").style.display = "block";
@@ -31,7 +41,7 @@ function Header(props) {
         // <!-- ============================================================== -->
         // <!-- Start Navigation --> */}
         {/* <div className="header header-transparent dark-text"> */}
-        <div className={"header dark-text " + props.headerClass}>
+        <div className={"header dark-text " + headerClass}>
             <div className="container">
                 <nav id="navigation" className="navigation navigation-landscape">
                     <div className="nav-header">
