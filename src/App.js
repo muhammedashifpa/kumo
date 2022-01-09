@@ -30,6 +30,12 @@ import Products from './components/adminComponents/dashbord/Products'
 import Accounts from './components/adminComponents/dashbord/Accounts'
 import AccountDetail from './components/adminComponents/dashbord/AccountDetail'
 import Orders from './components/adminComponents/dashbord/Orders'
+import AdminProducts from './components/adminComponents/products/AdminProducts'
+import AdminUsers from './components/adminComponents/users/AdminUsers'
+import AdminProductDetail from "./components/adminComponents/products/AdminProductDetail"
+// import AdminProductDetailEdit from "./components/adminComponents/products/AdminProductDetailEdit"
+import AdminUserDetail from "./components/adminComponents/users/AdminUserDetail"
+import AdminUserDetailEdit from "./components/adminComponents/users/AdminUserDetailEdit"
 import {
     BrowserRouter as Router,
     Routes,
@@ -80,14 +86,21 @@ function App() {
                     </Route>
                 </Route>
                 <Route path="admin" element={<AdminRoute><AdminLayout/></AdminRoute>}>
-                    <Route path='' element={<Dashboard/>}>
-                        <Route index element={<OverView/>}/>
+                    <Route path="*" element={<PageNotFound404 />} />
+                    <Route path="" element={<Navigate replace to="dashbord" />} />
+                    <Route path='dashbord' element={<Dashboard/>}>
+                        <Route path="" element={<Navigate replace to="overview" />} />
+                        <Route  path='overview' element={<OverView/>}/>
                         <Route path='orders' element={<Orders/>}/>
-                        {/* <Route path='orders/:slug' element={<Accounts/>}/> */}
                         <Route path='accounts' element={<Accounts/>}/>
                         <Route path='accounts/:slug' element={<AccountDetail/>}/>
                         <Route path='products' element={<Products/>}/>
                     </Route>
+                    <Route path="users" element={<AdminUsers/>} />
+                    <Route path="users/:slug" element={<AdminUserDetail/>}/>
+                    <Route path="users/:slug/edit" element={<AdminUserDetailEdit/>}/>
+                    <Route path="products" element={<AdminProducts/>}/>
+                    <Route path="products/:slug" element={<AdminProductDetail/>}/>
                 </Route>
             </Routes>
         </Router>

@@ -23,7 +23,7 @@ function MainDashbord() {
 								<div className="dashboard_author">
 									<h4 className="px-3 py-2 mb-0 lh-2 gray fs-sm ft-medium text-muted text-uppercase text-left">Dashboard Navigation</h4>
 									<ul className="dahs_navbar">
-										<li><NavLink to=""><i className="lni lni-user mr-2"></i>Overview</NavLink></li>
+										<li><NavLink to="overview"><i className="lni lni-user mr-2"></i>Overview</NavLink></li>
 										<li><NavLink to="orders"><i className="lni lni-shopping-basket mr-2"></i>Orders</NavLink></li>
 										<li><NavLink to="accounts" ><i className="lni lni-heart mr-2"></i>Accounts</NavLink></li>
 										<li><NavLink to="products"><i className="lni lni-map-marker mr-2"></i>Products</NavLink></li>

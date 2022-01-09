@@ -7,8 +7,8 @@ function Dashbord() {
         <section className="middle">
         <div className="container">
             <div className="row justify-content-center justify-content-between">
-                <MainDashbord  />
-                <Outlet />
+                    <MainDashbord  />
+                    <Outlet />
             </div>
         </div>
     </section> 
