@@ -5,7 +5,6 @@ import {setSnackbar} from '../ducks/snackbar'
 
 export const setSet =()=> {
     return (dispatch)=> {
-        console.log('**********************')
         dispatch(setSnackbar(
             true,
             "success",
@@ -15,11 +14,9 @@ export const setSet =()=> {
 }
 
 export const fetchCart =()=>{
-    console.log('Fetching Cart working...')
     return async(dispatch,getState) =>{
         try{
             const response = await axiosInstance.get('cart/')
-            console.log(response.date,'cart')
             dispatch({
                 type: 'UPDATE_CART',
                 payload : response.data
@@ -33,7 +30,6 @@ export const fetchCart =()=>{
 
 export const addCart = (p_id,u_id,size,count) =>{
     return async(dispatch,getState) => {
-        console.log('add cart working','p_id : ', p_id,'u_id : ', u_id,'size : ',size,'count : ',count)
         try{
             const response = await axiosInstance.post('cart/',{
                 product:p_id,
@@ -42,7 +38,6 @@ export const addCart = (p_id,u_id,size,count) =>{
                 count:count,
             })
             if(response.data['message']=='success'){
-                console.log('successfully added to the cart')
                 dispatch(
                     setSnackbar(
                       true,
@@ -54,7 +49,6 @@ export const addCart = (p_id,u_id,size,count) =>{
                 
             }
         }catch(err){
-            console.log('add cart error ***********',err)
             dispatch(
                 setSnackbar(
                   true,
@@ -68,11 +62,9 @@ export const addCart = (p_id,u_id,size,count) =>{
 
 export const removeCart = (c_id) =>{
     return async(dispatch,getState) => {
-    console.log('remove cart is working for : ',c_id)
         try{
             const response = await axiosInstance.delete('cart/'+c_id+'/')
             if(response.data['message']=='delete success'){
-                console.log('delete success')
                 dispatch(
                     setSnackbar(
                       true,
@@ -83,7 +75,6 @@ export const removeCart = (c_id) =>{
                 dispatch(fetchCart())
             }
         }catch(err){
-            console.log('remove cart error error ***********',err)
             dispatch(
                 setSnackbar(
                   true,

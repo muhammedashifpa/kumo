@@ -6,7 +6,6 @@ function ProfileInfo() {
 	const [data,setData] = useState(null)
 	useEffect(() => {
 		axiosInstance.get('accounts/user').then((res) => {
-			console.log(res.data)
 			setData(res.data)
 		})
 

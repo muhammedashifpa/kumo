@@ -22,7 +22,7 @@ function CategoriesHead() {
 						</div>
 						
 						<div className="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-							<Link to='gender=MEN' className="card card-overflow card-scale no-radius mb-0">
+							<Link to='gender=KIDS' className="card card-overflow card-scale no-radius mb-0">
 							<div className="bg-image" style={{background:"url(assets/img/a-2.png)no-repeat"}} data-overlay="2"></div>
 								<div className="ct_body">
 									<div className="ct_body_caption">	

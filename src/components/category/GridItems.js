@@ -6,7 +6,6 @@ import Grid4 from './categoryComponents/productlist/Grid4'
 
 
 function GridItems() {
-    console.log('Component render')
     const {slug} = useParams();
     const GridLoading = Loading(Grid4)
     const [appState, setAppState] = useState({

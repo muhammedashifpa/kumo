@@ -9,7 +9,7 @@ import {useSelector} from 'react-redux'
 
 
 function Register() {
-	const user = useSelector((state)=>state.user.value)
+	const user = useSelector((state)=>state.user)
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (user.auth){

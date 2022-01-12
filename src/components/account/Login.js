@@ -13,15 +13,13 @@ import { fetchCart } from '../../features/cart/action';
 
 function Login(props) {
     const user = useSelector((state)=>state.user)
-	console.log(user.auth)
     const dispatch = useDispatch()
 	const navigate = useNavigate();
-	useEffect(() => {
+	// useEffect(() => {
 		if (user.auth){
 			navigate('/');
-			console.log('navigated to home')
 		}
-	})
+	// })
 	const initialFormData = Object.freeze({
 		email: '',
 		password: '',

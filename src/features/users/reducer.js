@@ -20,6 +20,7 @@ const userReducer = (state = initialData,action)=>{
             }
         case 'LOGOUT':
             return {
+                ...state,
                 auth:false,
                 username:null,
                 user_id:null,

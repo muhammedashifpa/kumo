@@ -47,7 +47,7 @@ function CategoryStyle() {
 								
 								<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 									<div className="single_cats">
-										<Link to='/category/gender=WOMEN' className="cards card-overflow card-scale md_height">
+										<Link to='/category/gender=KIDS' className="cards card-overflow card-scale md_height">
 											<div className="bg-image" style={{background:"url(assets/img/b-3.png)no-repeat"}}></div>
 											<div className="ct_body">
 												<div className="ct_body_caption left">	
