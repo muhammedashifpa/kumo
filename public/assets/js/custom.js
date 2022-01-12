@@ -347,3 +347,12 @@ $(function() {
 	inlineCSS();
 	
 });
+
+
+$(document).ready(function(){
+	// Show hide popover
+	$(".nav-dropdown", document).click(function(){
+		$(this).find(".nav-dropdown").slideUp("fast"),
+		$(".nav-submenu").slideUp("fast")
+	});
+});

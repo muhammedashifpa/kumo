@@ -21,11 +21,12 @@
 		smoothproducts: function() {
 
 			// Add some markup & set some CSS
-
+			// console.log('smoothproducts is running')
 			$('.sp-loading').hide();
 			$('.sp-wrap').each(function() {
 				$(this).addClass('sp-touch');
 				var thumbQty = $('a', this).length;
+				// console.log('wrap function')
 
 				// If more than one image
 				if (thumbQty > 1) {
@@ -36,6 +37,7 @@
 						var thumb = $('img', this).attr('src'),
 							large = $(this).attr('href'),
 							classes = '';
+							// console.log(large)
 						//set default image
 						if((index === 0 && !defaultImage) || $(this).hasClass('sp-default')){
 							classes = ' class="sp-current"';

@@ -6,17 +6,19 @@ import CustomerReview from './homecomponents/CustomerReview'
 import HomeBlog from './homecomponents/HomeBlog'
 import HomeInstagram from './homecomponents/HomeInstagram'
 import Slicker from './homecomponents/Slicker'
+import GridItems from '../category/GridItems'
 
 
 function Home() {
     return (
         <div>
-            <Hero/>
-            {/* <Slicker /> */}
+            {/* <Hero/> */}
+            <Slicker />
             <CategoryStyle />
-            <ProductsLists />
-            <CustomerReview />
-            <HomeBlog />
+            <GridItems/>
+            {/* <ProductsLists /> */}
+            {/* <CustomerReview /> */}
+            {/* <HomeBlog /> */}
             <HomeInstagram />
         </div>
     )

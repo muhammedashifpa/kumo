@@ -21,11 +21,11 @@ function Footer() {
 									</div>
 									<div className="address mt-3">
 										<ul className="list-inline">
-											<li className="list-inline-item"><a href="#"><i className="lni lni-facebook-filled"></i></a></li>
-											<li className="list-inline-item"><a href="#"><i className="lni lni-twitter-filled"></i></a></li>
-											<li className="list-inline-item"><a href="#"><i className="lni lni-youtube"></i></a></li>
-											<li className="list-inline-item"><a href="#"><i className="lni lni-instagram-filled"></i></a></li>
-											<li className="list-inline-item"><a href="#"><i className="lni lni-linkedin-original"></i></a></li>
+											<li className="list-inline-item"><a href="none"><i className="lni lni-facebook-filled"></i></a></li>
+											<li className="list-inline-item"><a href="none"><i className="lni lni-twitter-filled"></i></a></li>
+											<li className="list-inline-item"><a href="none"><i className="lni lni-youtube"></i></a></li>
+											<li className="list-inline-item"><a href="none"><i className="lni lni-instagram-filled"></i></a></li>
+											<li className="list-inline-item"><a href="none"><i className="lni lni-linkedin-original"></i></a></li>
 										</ul>
 									</div>
 								</div>
@@ -35,12 +35,12 @@ function Footer() {
 								<div className="footer_widget">
 									<h4 className="widget_title">Supports</h4>
 									<ul className="footer-menu">
-										<li><a href="#">Contact Us</a></li>
-										<li><a href="#">About Page</a></li>
-										<li><a href="#">Size Guide</a></li>
-										<li><a href="#">Shipping & Returns</a></li>
-										<li><a href="#">FAQ's Page</a></li>
-										<li><a href="#">Privacy</a></li>
+										<li><a href="none">Contact Us</a></li>
+										<li><a href="none">About Page</a></li>
+										<li><a href="none">Size Guide</a></li>
+										<li><a href="none">Shipping & Returns</a></li>
+										<li><a href="none">FAQ's Page</a></li>
+										<li><a href="none">Privacy</a></li>
 									</ul>
 								</div>
 							</div>
@@ -49,11 +49,11 @@ function Footer() {
 								<div className="footer_widget">
 									<h4 className="widget_title">Shop</h4>
 									<ul className="footer-menu">
-										<li><a href="#">Men's Shopping</a></li>
-										<li><a href="#">Women's Shopping</a></li>
-										<li><a href="#">Kids's Shopping</a></li>
-										<li><a href="#">Furniture</a></li>
-										<li><a href="#">Discounts</a></li>
+										<li><a href="none">Men's Shopping</a></li>
+										<li><a href="none">Women's Shopping</a></li>
+										<li><a href="none">Kids's Shopping</a></li>
+										<li><a href="none">Furniture</a></li>
+										<li><a href="none">Discounts</a></li>
 									</ul>
 								</div>
 							</div>
@@ -62,10 +62,10 @@ function Footer() {
 								<div className="footer_widget">
 									<h4 className="widget_title">Company</h4>
 									<ul className="footer-menu">
-										<li><a href="#">About</a></li>
-										<li><a href="#">Blog</a></li>
-										<li><a href="#">Affiliate</a></li>
-										<li><a href="#">Login</a></li>
+										<li><a href="none">About</a></li>
+										<li><a href="none">Blog</a></li>
+										<li><a href="none">Affiliate</a></li>
+										<li><a href="none">Login</a></li>
 									</ul>
 								</div>
 							</div>

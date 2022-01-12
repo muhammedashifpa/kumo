@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import styled from 'styled-components';
+import {Link} from 'react-router-dom'
 
 function Slicker() {
     var settings = {
@@ -13,11 +14,11 @@ function Slicker() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 3000,
       };
     return (
-        <CarosalWrapper {...settings} className="home-slider">
+        <Slider {...settings} className="home-slider">
           {/* <!-- Slide --> */}
             <SliderWrapper DataBackGround="assets/img/banner-2.png" >
               <div className="container">
@@ -33,7 +34,7 @@ function Slicker() {
                           <span className="trending">There's nothing like trend</span>
                         </div>
 
-                        <a href="#" className="btn stretched-link borders" >Shop Now<i className="lni lni-arrow-right ml-2"></i></a>
+                        <Link to="/category" className="btn stretched-link borders" >Shop Now<i className="lni lni-arrow-right ml-2"></i></Link>
                       </div>
                       {/* <!-- Slide Title / End --> */}
 
@@ -59,7 +60,7 @@ function Slicker() {
                           <span className="trending">There's nothing like trend</span>
                         </div>
 
-                        <a href="#" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></a>
+                        <Link to="/category" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></Link>
                       </div>
                       {/* <!-- Slide Title / End --> */}
 
@@ -84,7 +85,7 @@ function Slicker() {
                               <span className="trending">There's nothing like trend</span>
                             </div>
 
-                            <a href="#" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></a>
+                            <Link to="/category" className="btn stretched-link borders">Shop Now<i className="lni lni-arrow-right ml-2"></i></Link>
                           </div>
                           {/* <!-- Slide Title / End --> */}
 
@@ -94,7 +95,7 @@ function Slicker() {
                   </div>
                 </SliderWrapper>
 
-        </CarosalWrapper>
+        </Slider>
     );
 }
 
@@ -104,7 +105,7 @@ const CarosalWrapper = styled(Slider)`
 `
 
 const SliderWrapper = styled.div`
-  background-size:cover;
+  background-size:cover !important;
   background-position:center;
   background-repeate:no-repeat;
   min-height: 520px;
@@ -116,7 +117,7 @@ const SliderWrapper = styled.div`
   text-align: left;
   background-image:${props=>`url('${props.DataBackGround}')`};
   @media (min-width:1200px){
-    height:85vh;
+    height:100vh;
   }
   .slick-list{
     position:relative !important;

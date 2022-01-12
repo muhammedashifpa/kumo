@@ -10,7 +10,7 @@ function Modals() {
     return (
         <div>
             <ProductViewModal />
-            <LogInModal />
+            <LogInModal/>
             <Search />
             <Wishlist />
             <SideCart />

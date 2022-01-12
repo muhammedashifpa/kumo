@@ -1,30 +1,304 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import $ from 'jquery';
+import { addCart } from '../../../features/cart/action';
+import {useDispatch,useSelector} from 'react-redux'
+import {addFav,removeFav} from '../../../features/favourite/action'
 
-function FullView() {
+
+
+
+function FullView(props) {
+	const user = useSelector(state => state.user);
+	const dispatch = useDispatch()
+	const initialValue = Object.freeze({size: 32,count: 1,});
+	const [value,updateValue] = useState(initialValue)
+	const handleChange = (e) => {
+		updateValue({
+			...value,
+			[e.target.name]: Number(e.target.value),
+		});
+		console.log(value);
+	};
+	const {data}=props
+	useEffect(() => {
+		 function smoothproducts() {
+
+			// Add some markup & set some CSS
+			// console.log('smoothproducts is running')
+			$('.sp-loading').hide();
+			$('.sp-wrap').each(function() {
+				$(this).addClass('sp-touch');
+				var thumbQty = $('a', this).length;
+				// console.log('wrap function')
+
+				// If more than one image
+				if (thumbQty > 1) {
+					var firstLarge,firstThumb,
+						defaultImage = $('a.sp-default', this)[0]?true:false;
+					$(this).append('<div class="sp-large"></div><div class="sp-thumbs sp-tb-active"></div>');
+					$('a', this).each(function(index) {
+						var thumb = $('img', this).attr('src'),
+							large = $(this).attr('href'),
+							classes = '';
+							// console.log(large)
+						//set default image
+						if((index === 0 && !defaultImage) || $(this).hasClass('sp-default')){
+							classes = ' class="sp-current"';
+							firstLarge = large;
+							firstThumb = $('img', this)[0].src;
+						}
+						$(this).parents('.sp-wrap').find('.sp-thumbs').append('<a href="' + large + '" style="background-image:url(' + thumb + ')"'+classes+'></a>');
+						$(this).remove();
+					});
+					$('.sp-large', this).append('<a href="' + firstLarge + '" class="sp-current-big"><img src="' + firstThumb + '" alt="" /></a>');
+					$('.sp-wrap').css('display', 'inline-block');
+				// If only one image
+				} else {
+					$(this).append('<div class="sp-large"></div>');
+					$('a', this).appendTo($('.sp-large', this)).addClass('.sp-current-big');
+					$('.sp-wrap').css('display', 'inline-block');
+				}
+			});
+
+
+			// Prevent clicking while things are happening
+			$(document.body).on('click', '.sp-thumbs', function(event) {
+				event.preventDefault();
+			});
+
+
+			// Is this a touch screen or not?
+			$(document.body).on('mouseover', function(event) {
+				$('.sp-wrap').removeClass('sp-touch').addClass('sp-non-touch');
+				event.preventDefault();
+			});
+
+			$(document.body).on('touchstart', function() {
+				$('.sp-wrap').removeClass('sp-non-touch').addClass('sp-touch');
+			});
+
+			// Clicking a thumbnail
+			$(document.body).on('click', '.sp-tb-active a', function(event) {
+
+				event.preventDefault();
+				$(this).parent().find('.sp-current').removeClass();
+				$(this).addClass('sp-current');
+				$(this).parents('.sp-wrap').find('.sp-thumbs').removeClass('sp-tb-active');
+				$(this).parents('.sp-wrap').find('.sp-zoom').remove();
+
+				var currentHeight = $(this).parents('.sp-wrap').find('.sp-large').height(),
+					currentWidth = $(this).parents('.sp-wrap').find('.sp-large').width();
+				$(this).parents('.sp-wrap').find('.sp-large').css({
+					overflow: 'hidden',
+					height: currentHeight + 'px',
+					width: currentWidth + 'px'
+				});
+
+				$(this).addClass('sp-current').parents('.sp-wrap').find('.sp-large a').remove();
+
+				var nextLarge = $(this).parent().find('.sp-current').attr('href'),
+					nextThumb = get_url_from_background($(this).parent().find('.sp-current').css('backgroundImage'));
+
+				$(this).parents('.sp-wrap').find('.sp-large').html('<a href="' + nextLarge + '" class="sp-current-big"><img src="' + nextThumb + '"/></a>');
+				$(this).parents('.sp-wrap').find('.sp-large').hide().fadeIn(250, function() {
+
+					var autoHeight = $(this).parents('.sp-wrap').find('.sp-large img').height();
+
+					$(this).parents('.sp-wrap').find('.sp-large').animate({
+						height: autoHeight
+					}, 'fast', function() {
+						$('.sp-large').css({
+							height: 'auto',
+							width: 'auto'
+						});
+					});
+
+					$(this).parents('.sp-wrap').find('.sp-thumbs').addClass('sp-tb-active');
+				});
+			});
+
+			// Zoom In non-touch
+			$(document.body).on('mouseenter', '.sp-non-touch .sp-large', function(event) {
+				var largeUrl = $('a', this).attr('href');
+				$(this).append('<div class="sp-zoom"><img src="' + largeUrl + '"/></div>');
+				$(this).find('.sp-zoom').fadeIn(250);
+				event.preventDefault();
+			});
+
+			// Zoom Out non-touch
+			$(document.body).on('mouseleave', '.sp-non-touch .sp-large', function(event) {
+				$(this).find('.sp-zoom').fadeOut(250, function() {
+					$(this).remove();
+				});
+				event.preventDefault();
+			});
+
+			// Open in Lightbox non-touch
+			$(document.body).on('click', '.sp-non-touch .sp-zoom', function(event) {
+				var currentImg = $(this).html(),
+					thumbAmt = $(this).parents('.sp-wrap').find('.sp-thumbs a').length,
+					currentThumb = ($(this).parents('.sp-wrap').find('.sp-thumbs .sp-current').index())+1;
+				$(this).parents('.sp-wrap').addClass('sp-selected');
+				$('body').append("<div class='sp-lightbox' data-currenteq='"+currentThumb+"'>" + currentImg + "</div>");
+
+				if(thumbAmt > 1){
+					$('.sp-lightbox').append("<a href='#' id='sp-prev'></a><a href='#' id='sp-next'></a>");
+					if(currentThumb == 1) {
+						$('#sp-prev').css('opacity','.1');
+					} else if (currentThumb == thumbAmt){
+						$('#sp-next').css('opacity','.1');
+					}
+				}
+				$('.sp-lightbox').fadeIn();
+				event.preventDefault();
+			});
+
+			// Open in Lightbox touch
+			$(document.body).on('click', '.sp-large a', function(event) {
+				var currentImg = $(this).attr('href'),
+					thumbAmt = $(this).parents('.sp-wrap').find('.sp-thumbs a').length,
+					currentThumb = ($(this).parents('.sp-wrap').find('.sp-thumbs .sp-current').index())+1;
+
+				$(this).parents('.sp-wrap').addClass('sp-selected');
+				$('body').append('<div class="sp-lightbox" data-currenteq="'+currentThumb+'"><img src="' + currentImg + '"/></div>');
+
+				if(thumbAmt > 1){
+					$('.sp-lightbox').append("<a href='#' id='sp-prev'></a><a href='#' id='sp-next'></a>");
+					if(currentThumb == 1) {
+						$('#sp-prev').css('opacity','.1');
+					} else if (currentThumb == thumbAmt){
+						$('#sp-next').css('opacity','.1');
+					}
+				}
+				$('.sp-lightbox').fadeIn();
+				event.preventDefault();
+			});
+
+			// Pagination Forward
+			$(document.body).on('click', '#sp-next', function(event) {
+				event.stopPropagation();
+				var currentEq = $('.sp-lightbox').data('currenteq'),
+					totalItems = $('.sp-selected .sp-thumbs a').length;
+
+					if(currentEq >= totalItems) {
+					} else {
+						var nextEq = currentEq + 1,
+						newImg = $('.sp-selected .sp-thumbs').find('a:eq('+currentEq+')').attr('href'),
+						newThumb = get_url_from_background($('.sp-selected .sp-thumbs').find('a:eq('+currentEq+')').css('backgroundImage'));
+						if (currentEq == (totalItems - 1)) {
+							$('#sp-next').css('opacity','.1');
+						}
+						$('#sp-prev').css('opacity','1');
+						$('.sp-selected .sp-current').removeClass();
+						$('.sp-selected .sp-thumbs a:eq('+currentEq+')').addClass('sp-current');
+						$('.sp-selected .sp-large').empty().append('<a href='+newImg+'><img src="'+newThumb+'"/></a>');
+						$('.sp-lightbox img').fadeOut(250, function() {
+							$(this).remove();
+							$('.sp-lightbox').data('currenteq',nextEq).append('<img src="'+newImg+'"/>');
+							$('.sp-lightbox img').hide().fadeIn(250);
+						});
+					}
+
+				event.preventDefault();
+			});
+
+		// Pagination Backward
+			$(document.body).on('click', '#sp-prev', function(event) {
+
+				event.stopPropagation();
+				var currentEq = $('.sp-lightbox').data('currenteq'),
+					currentEq = currentEq - 1;
+					if(currentEq <= 0) {
+					} else {
+						if (currentEq == 1) {
+							$('#sp-prev').css('opacity','.1');
+						}
+						var nextEq = currentEq - 1,
+						newImg = $('.sp-selected .sp-thumbs').find('a:eq('+nextEq+')').attr('href'),
+						newThumb = get_url_from_background($('.sp-selected .sp-thumbs').find('a:eq('+nextEq+')').css('backgroundImage'));
+						$('#sp-next').css('opacity','1');
+						$('.sp-selected .sp-current').removeClass();
+						$('.sp-selected .sp-thumbs a:eq('+nextEq+')').addClass('sp-current');
+						$('.sp-selected .sp-large').empty().append('<a href='+newImg+'><img src="'+newThumb+'"/></a>');
+						$('.sp-lightbox img').fadeOut(250, function() {
+							$(this).remove();
+							$('.sp-lightbox').data('currenteq',currentEq).append('<img src="'+newImg+'"/>');
+							$('.sp-lightbox img').hide().fadeIn(250);
+						});
+					}
+				event.preventDefault();
+			});
+
+
+			// Close Lightbox
+			$(document.body).on('click', '.sp-lightbox', function() {
+				closeModal();
+			});
+
+			// Close on Esc
+			$(document).keydown(function(e) {
+				if (e.keyCode == 27) {
+					closeModal();
+					return false;
+				}
+			});
+
+			function closeModal (){
+				$('.sp-selected').removeClass('sp-selected');
+				$('.sp-lightbox').fadeOut(function() {
+						$(this).remove();
+				});
+			}
+
+
+			// Panning zoomed image (non-touch)
+
+			$('.sp-large').mousemove(function(e) {
+				var viewWidth = $(this).width(),
+					viewHeight = $(this).height(),
+					viewOffset = $(this).offset(),
+					largeWidth = $(this).find('.sp-zoom').width(),
+					largeHeight = $(this).find('.sp-zoom').height(),
+					relativeXPosition = (e.pageX - viewOffset.left),
+					relativeYPosition = (e.pageY - viewOffset.top),
+					moveX = Math.floor((relativeXPosition * (viewWidth - largeWidth) / viewWidth)),
+					moveY = Math.floor((relativeYPosition * (viewHeight - largeHeight) / viewHeight));
+
+				$(this).find('.sp-zoom').css({
+					left: moveX,
+					top: moveY
+				});
+
+			});
+
+			function get_url_from_background(bg){
+				return bg.match(/url\([\"\']{0,1}(.+)[\"\']{0,1}\)+/i)[1];
+			}
+		}
+		smoothproducts()
+	},[])
+
     return (
-        <div>
             <section className="middle">
 				<div className="container">
 					<div className="row">
-					
 						<div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-							<div className="sp-loading"><img src="assets/img/product/15.png" alt=""/><br/>LOADING IMAGES</div>
 							<div className="sp-wrap">
-								<a href="assets/img/product/16.png"><img src="assets/img/product/16.png" alt=""/></a>
-								<a href="assets/img/product/17.png"><img src="assets/img/product/17.png" alt=""/></a>
-								<a href="assets/img/product/18.png"><img src="assets/img/product/18.png" alt=""/></a>
-								<a href="assets/img/product/19.png"><img src="assets/img/product/19.png" alt=""/></a>
-								<a href="assets/img/product/20.png"><img src="assets/img/product/20.png" alt=""/></a>
-								<a href="assets/img/product/21.png"><img src="assets/img/product/21.png" alt=""/></a>
+								{ data.images?
+									data.images.map((image)=>{
+										return (
+										<a key={image.id}  href={image.image}><img src={image.image} alt=""/></a>
+										)
+									})
+									: 	<div className="sp-loading"><img src="assets/css/img/loading.gif" alt=""/><br/>LOADING IMAGES</div>
+								}
 							</div>
 						</div>
-						
 						<div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
 							<div className="prd_details">
-								
-								<div className="prt_01 mb-1"><span className="text-purple bg-light-purple rounded py-1">Women's Suit</span></div>
+								<div className="prt_01 mb-1"><span className="text-purple bg-light-purple rounded py-1">{data.category}</span></div>
 								<div className="prt_02 mb-3">
-									<h2 className="ft-bold mb-1">Women Striped Shirt Dress</h2>
+									<h2 className="ft-bold mb-1" >{data.product_name}</h2>
 									<div className="text-left">
 										<div className="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
 											<i className="fas fa-star filled"></i>
@@ -34,12 +308,12 @@ function FullView() {
 											<i className="fas fa-star"></i>
 											<span className="small">(412 Reviews)</span>
 										</div>
-										<div className="elis_rty"><span className="ft-medium text-muted line-through fs-md mr-2">$199</span><span className="ft-bold theme-cl fs-lg mr-2">$110</span><span className="ft-regular text-light bg-success py-1 px-2 fs-sm">In Stock</span></div>
+										<div className="elis_rty"><span className="ft-medium text-muted line-through fs-md mr-2">₹{data.price}</span><span className="ft-bold theme-cl fs-lg mr-2">₹{data.offer_price}</span><span className="ft-regular text-light bg-success py-1 px-2 fs-sm">In Stock</span></div>
 									</div>
 								</div>
 								
 								<div className="prt_03 mb-4">
-									<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa.</p>
+									<p>{data.description}</p>
 								</div>
 								
 								<div className="prt_04 mb-2">
@@ -47,27 +321,27 @@ function FullView() {
 									<div className="text-left">
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="white8"/>
-											<label className="form-option-label rounded-circle" for="white8"><span className="form-option-color rounded-circle blc7"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="white8"><span className="form-option-color rounded-circle blc7"></span></label>
 										</div>
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="blue8"/>
-											<label className="form-option-label rounded-circle" for="blue8"><span className="form-option-color rounded-circle blc2"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="blue8"><span className="form-option-color rounded-circle blc2"></span></label>
 										</div>
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="yellow8"/>
-											<label className="form-option-label rounded-circle" for="yellow8"><span className="form-option-color rounded-circle blc5"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="yellow8"><span className="form-option-color rounded-circle blc5"></span></label>
 										</div>
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="pink8"/>
-											<label className="form-option-label rounded-circle" for="pink8"><span className="form-option-color rounded-circle blc3"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="pink8"><span className="form-option-color rounded-circle blc3"></span></label>
 										</div>
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="red"/>
-											<label className="form-option-label rounded-circle" for="red"><span className="form-option-color rounded-circle blc4"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="red"><span className="form-option-color rounded-circle blc4"></span></label>
 										</div>
 										<div className="form-check form-option form-check-inline mb-1">
 											<input className="form-check-input" type="radio" name="color8" id="green"/>
-											<label className="form-option-label rounded-circle" for="green"><span className="form-option-color rounded-circle blc6"></span></label>
+											<label className="form-option-label rounded-circle" htmlFor="green"><span className="form-option-color rounded-circle blc6"></span></label>
 										</div>
 									</div>
 								</div>
@@ -75,54 +349,39 @@ function FullView() {
 								<div className="prt_04 mb-4">
 									<p className="d-flex align-items-center mb-0 text-dark ft-medium">Size:</p>
 									<div className="text-left pb-0 pt-2">
-										<div className="form-check size-option form-option form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="28" checked=""/>
-											<label className="form-option-label" for="28">28</label>
+										<div className="form-check form-option size-option form-check-inline mb-2">
+											<input className="form-check-input" onChange={handleChange} value='28' type="radio" name="size" id="28"/>
+											<label className="form-option-label" htmlFor="28">28</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="30"/>
-											<label className="form-option-label" for="30">30</label>
+											<input className="form-check-input" onChange={handleChange} value='30' type="radio" name="size" id="30"/>
+											<label className="form-option-label" htmlFor="30">30</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="32"/>
-											<label className="form-option-label" for="32">32</label>
+											<input className="form-check-input" onChange={handleChange} value='32' type="radio" name="size" id="32" defaultChecked/>
+											<label className="form-option-label" htmlFor="32">32</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="34"/>
-											<label className="form-option-label" for="34">34</label>
+											<input className="form-check-input" onChange={handleChange} value='34' type="radio" name="size" id="34"/>
+											<label className="form-option-label" htmlFor="34">34</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="36"/>
-											<label className="form-option-label" for="36">36</label>
+											<input className="form-check-input" onChange={handleChange} value='36' type="radio" name="size" id="36"/>
+											<label className="form-option-label" htmlFor="36">36</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="38"/>
-											<label className="form-option-label" for="38">38</label>
+											<input className="form-check-input" onChange={handleChange} value='38' type="radio" name="size" id="38"/>
+											<label className="form-option-label" htmlFor="38">38</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="40"/>
-											<label className="form-option-label" for="40">40</label>
+											<input className="form-check-input" onChange={handleChange} value='40' type="radio" name="size" id="40"/>
+											<label className="form-option-label" htmlFor="40">40</label>
 										</div>
 										<div className="form-check form-option size-option  form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="42"/>
-											<label className="form-option-label" for="42">42</label>
+											<input className="form-check-input" onChange={handleChange} value='42' type="radio" name="size" id="42"/>
+											<label className="form-option-label" htmlFor="42">42</label>
 										</div>
-										<div className="form-check form-option size-option  form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="44"/>
-											<label className="form-option-label" for="44">44</label>
-										</div>
-										<div className="form-check form-option size-option  form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="46"/>
-											<label className="form-option-label" for="46">46</label>
-										</div>
-										<div className="form-check form-option size-option  form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="48"/>
-											<label className="form-option-label" for="48">48</label>
-										</div>
-										<div className="form-check form-option size-option  form-check-inline mb-2">
-											<input className="form-check-input" type="radio" name="size" id="50"/>
-											<label className="form-option-label" for="50">50</label>
-										</div>
+										
 									</div>
 								</div>
 								
@@ -130,8 +389,8 @@ function FullView() {
 									<div className="form-row mb-7">
 										<div className="col-12 col-lg-auto">
 											{/* <!-- Quantity --> */}
-											<select className="mb-2 custom-select">
-											  <option value="1" selected="">1</option>
+											<select onChange={handleChange} defaultValue='1' name="count" className="mb-2 custom-select">
+											  <option value="1">1</option>
 											  <option value="2">2</option>
 											  <option value="3">3</option>
 											  <option value="4">4</option>
@@ -140,13 +399,13 @@ function FullView() {
 										</div>
 										<div className="col-12 col-lg">
 											{/* <!-- Submit --> */}
-											<button type="submit" className="btn btn-block custom-height bg-dark mb-2">
+											<button type="submit" onClick={() => dispatch(addCart(data.id,user.user_id,value.size,value.count)) } className="btn btn-block custom-height bg-dark mb-2">
 												<i className="lni lni-shopping-basket mr-2"></i>Add to Cart 
 											</button>
 										</div>
 										<div className="col-12 col-lg-auto">
 											{/* <!-- Wishlist --> */}
-											<button className="btn custom-height btn-default btn-block mb-2 text-dark" data-toggle="button">
+											<button onClick={() => dispatch(addFav(data.id,user.user_id))} className="btn custom-height btn-default btn-block mb-2 text-dark" data-toggle="button">
 												<i className="lni lni-heart mr-2"></i>Wishlist
 											</button>
 										</div>
@@ -173,226 +432,6 @@ function FullView() {
 					</div>
 				</div>
 			</section>
-			<section className="middle">
-				<div className="container">
-					<div className="row align-items-center justify-content-center">
-						<div className="col-xl-11 col-lg-12 col-md-12 col-sm-12">
-							<ul className="nav nav-tabs b-0 d-flex align-items-center justify-content-center simple_tab_links mb-4" id="myTab" role="tablist">
-								<li className="nav-item" role="presentation">
-									<a className="nav-link active" id="description-tab" href="#description" data-toggle="tab" role="tab" aria-controls="description" aria-selected="true">Description</a>
-								</li>
-								<li className="nav-item" role="presentation">
-									<a className="nav-link" href="#information" id="information-tab" data-toggle="tab" role="tab" aria-controls="information" aria-selected="false">Additional information</a>
-								</li>
-								<li className="nav-item" role="presentation">
-									<a className="nav-link" href="#reviews" id="reviews-tab" data-toggle="tab" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
-								</li>
-							</ul>
-							
-							<div className="tab-content" id="myTabContent">
-								
-								{/* <!-- Description Content --> */}
-								<div className="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-									<div className="description_info">
-										<p className="p-0 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-										<p className="p-0">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-									</div>
-								</div>
-								
-								{/* <!-- Additional Content --> */}
-								<div className="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab">
-									<div className="additionals">
-										<table className="table">
-											<tbody>
-												<tr>
-												  <th className="ft-medium text-dark">ID</th>
-												  <td>#1253458</td>
-												</tr>
-												<tr>
-												  <th className="ft-medium text-dark">SKU</th>
-												  <td>KUM125896</td>
-												</tr>
-												<tr>
-												  <th className="ft-medium text-dark">Color</th>
-												  <td>Sky Blue</td>
-												</tr>
-												<tr>
-												  <th className="ft-medium text-dark">Size</th>
-												  <td>Xl, 42</td>
-												</tr>
-												<tr>
-												  <th className="ft-medium text-dark">Weight</th>
-												  <td>450 Gr</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-								
-								{/* <!-- Reviews Content --> */}
-								<div className="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-									<div className="reviews_info">
-										<div className="single_rev d-flex align-items-start br-bottom py-3">
-											<div className="single_rev_thumb"><img src="assets/img/team-1.jpg" className="img-fluid circle" width="90" alt="" /></div>
-											<div className="single_rev_caption d-flex align-items-start pl-3">
-												<div className="single_capt_left">
-													<h5 className="mb-0 fs-md ft-medium lh-1">Daniel Rajdesh</h5>
-													<span className="small">30 jul 2021</span>
-													<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum</p>
-												</div>
-												<div className="single_capt_right">
-													<div className="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										{/* <!-- Single Review --> */}
-										<div className="single_rev d-flex align-items-start br-bottom py-3">
-											<div className="single_rev_thumb"><img src="assets/img/team-2.jpg" className="img-fluid circle" width="90" alt="" /></div>
-											<div className="single_rev_caption d-flex align-items-start pl-3">
-												<div className="single_capt_left">
-													<h5 className="mb-0 fs-md ft-medium lh-1">Seema Gupta</h5>
-													<span className="small">30 Aug 2021</span>
-													<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum</p>
-												</div>
-												<div className="single_capt_right">
-													<div className="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										{/* <!-- Single Review --> */}
-										<div className="single_rev d-flex align-items-start br-bottom py-3">
-											<div className="single_rev_thumb"><img src="assets/img/team-3.jpg" className="img-fluid circle" width="90" alt="" /></div>
-											<div className="single_rev_caption d-flex align-items-start pl-3">
-												<div className="single_capt_left">
-													<h5 className="mb-0 fs-md ft-medium lh-1">Mark Jugermi</h5>
-													<span className="small">10 Oct 2021</span>
-													<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum</p>
-												</div>
-												<div className="single_capt_right">
-													<div className="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										{/* <!-- Single Review --> */}
-										<div className="single_rev d-flex align-items-start py-3">
-											<div className="single_rev_thumb"><img src="assets/img/team-4.jpg" className="img-fluid circle" width="90" alt="" /></div>
-											<div className="single_rev_caption d-flex align-items-start pl-3">
-												<div className="single_capt_left">
-													<h5 className="mb-0 fs-md ft-medium lh-1">Meena Rajpoot</h5>
-													<span className="small">17 Dec 2021</span>
-													<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum</p>
-												</div>
-												<div className="single_capt_right">
-													<div className="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-														<i className="fas fa-star filled"></i>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-									</div>
-									
-									<div className="reviews_rate">
-										<form className="row">
-											<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-												<h4>Submit Rating</h4>
-											</div>
-											
-											<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-												<div className="revie_stars d-flex align-items-center justify-content-between px-2 py-2 gray rounded mb-2 mt-1">
-													<div className="srt_013">
-														<div className="submit-rating">
-														  <input id="star-5" type="radio" name="rating" value="star-5" />
-														  <label for="star-5" title="5 stars">
-															<i className="active fa fa-star" aria-hidden="true"></i>
-														  </label>
-														  <input id="star-4" type="radio" name="rating" value="star-4" />
-														  <label for="star-4" title="4 stars">
-															<i className="active fa fa-star" aria-hidden="true"></i>
-														  </label>
-														  <input id="star-3" type="radio" name="rating" value="star-3" />
-														  <label for="star-3" title="3 stars">
-															<i className="active fa fa-star" aria-hidden="true"></i>
-														  </label>
-														  <input id="star-2" type="radio" name="rating" value="star-2" />
-														  <label for="star-2" title="2 stars">
-															<i className="active fa fa-star" aria-hidden="true"></i>
-														  </label>
-														  <input id="star-1" type="radio" name="rating" value="star-1" />
-														  <label for="star-1" title="1 star">
-															<i className="active fa fa-star" aria-hidden="true"></i>
-														  </label>
-														</div>
-													</div>
-													
-													<div className="srt_014">
-														<h6 className="mb-0">4 Star</h6>
-													</div>
-												</div>
-											</div>
-											
-											<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-												<div className="form-group">
-													<label className="medium text-dark ft-medium">Full Name</label>
-													<input type="text" className="form-control" />
-												</div>
-											</div>
-											
-											<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-												<div className="form-group">
-													<label className="medium text-dark ft-medium">Email Address</label>
-													<input type="email" className="form-control" />
-												</div>
-											</div>
-											
-											<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-												<div className="form-group">
-													<label className="medium text-dark ft-medium">Description</label>
-													<textarea className="form-control"></textarea>
-												</div>
-											</div>
-											
-											<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-												<div className="form-group m-0">
-													<a className="btn btn-white stretched-link hover-black">Submit Review <i className="lni lni-arrow-right"></i></a>
-												</div>
-											</div>
-											
-										</form>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-        </div>
     )
 }
 

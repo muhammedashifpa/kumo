@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 function CategoryStyle() {
     return (
         <div>
@@ -10,7 +10,7 @@ function CategoryStyle() {
 						
 						<div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 							<div className="single_cats">
-								<a href="#" className="cards card-overflow card-scale lg_height">
+								<Link to='/category/gender=WOMEN' className="cards card-overflow card-scale lg_height">
 									<div className="bg-image" style={{background:"url(assets/img/b-8.png)no-repeat"}}></div>
 									<div className="ct_body">
 										<div className="ct_body_caption left">	
@@ -21,11 +21,11 @@ function CategoryStyle() {
 											<span className="stretched-link fs-md">Browse Items <i className="ti-arrow-circle-right"></i></span>
 										</div>
 									</div>
-								</a>
+								</Link>
 							</div>
 							
 							<div className="single_cats">
-								<a href="#" className="cards card-overflow card-scale md_height">
+								<Link to='/category/gender=MEN' className="cards card-overflow card-scale md_height">
 									<div className="bg-image" style={{background:"url(assets/img/b-5.png)no-repeat"}}></div>
 									<div className="ct_body">
 										<div className="ct_body_caption left">	
@@ -36,7 +36,7 @@ function CategoryStyle() {
 											<span className="stretched-link fs-md">Browse Items <i className="ti-arrow-circle-right"></i></span>
 										</div>
 									</div>
-								</a>
+								</Link>
 							</div>
 							
 						</div>
@@ -47,7 +47,7 @@ function CategoryStyle() {
 								
 								<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 									<div className="single_cats">
-										<a href="#" className="cards card-overflow card-scale md_height">
+										<Link to='/category/gender=KIDS' className="cards card-overflow card-scale md_height">
 											<div className="bg-image" style={{background:"url(assets/img/b-3.png)no-repeat"}}></div>
 											<div className="ct_body">
 												<div className="ct_body_caption left">	
@@ -58,10 +58,10 @@ function CategoryStyle() {
 													<span className="stretched-link fs-md">Browse Items <i className="ti-arrow-circle-right"></i></span>
 												</div>
 											</div>
-										</a>
+										</Link>
 									</div>
 									<div className="single_cats">
-										<a href="#" className="cards card-overflow card-scale lg_height">
+										<Link to='/category/gender=MEN' className="cards card-overflow card-scale lg_height">
 											<div className="bg-image" style={{background:"url(assets/img/b-7.png)no-repeat"}}></div>
 											<div className="ct_body">
 												<div className="ct_body_caption left">	
@@ -72,7 +72,7 @@ function CategoryStyle() {
 													<span className="stretched-link fs-md">Browse Items <i className="ti-arrow-circle-right"></i></span>
 												</div>
 											</div>
-										</a>
+										</Link>
 									</div>
 								</div>
 								
