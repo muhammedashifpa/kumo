@@ -1,4 +1,5 @@
 // import React from 'react'
+import Snackbar from './components/randomomponents/Snackbar'
 import PaymentMethod from "./components/myAccount/myAccountComponents/PaymentMethod"
 import ProfileInfo from "./components/myAccount/myAccountComponents/ProfileInfo"
 import EditProfile from "./components/myAccount/myAccountComponents/EditProfile"
@@ -31,9 +32,10 @@ import Accounts from './components/adminComponents/dashbord/Accounts'
 import AccountDetail from './components/adminComponents/dashbord/AccountDetail'
 import Orders from './components/adminComponents/dashbord/Orders'
 import AdminProducts from './components/adminComponents/products/AdminProducts'
-import AdminUsers from './components/adminComponents/users/AdminUsers'
 import AdminProductDetail from "./components/adminComponents/products/AdminProductDetail"
-// import AdminProductDetailEdit from "./components/adminComponents/products/AdminProductDetailEdit"
+import AdminProductAdd from "./components/adminComponents/products/AdminProductAdd"
+import AddImages from './components/adminComponents/products/AddImages'
+import AdminUsers from './components/adminComponents/users/AdminUsers'
 import AdminUserDetail from "./components/adminComponents/users/AdminUserDetail"
 import AdminUserDetailEdit from "./components/adminComponents/users/AdminUserDetailEdit"
 import {
@@ -48,6 +50,7 @@ function App() {
 
   return (
       <div className="App">
+        <Snackbar/>
           <Router>
             <Routes>
                 <Route path="/" element={<ClientLayout/>}>
@@ -100,6 +103,8 @@ function App() {
                     <Route path="users/:slug" element={<AdminUserDetail/>}/>
                     <Route path="users/:slug/edit" element={<AdminUserDetailEdit/>}/>
                     <Route path="products" element={<AdminProducts/>}/>
+                    <Route path="products/add" element={<AdminProductAdd/>}/>
+                    <Route path="products/add-image/:slug" element={<AddImages/>}/>
                     <Route path="products/:slug" element={<AdminProductDetail/>}/>
                 </Route>
             </Routes>

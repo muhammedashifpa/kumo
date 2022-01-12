@@ -16,6 +16,7 @@ function ProfileDashbord(props) {
 		axiosInstance.defaults.headers['Authorization'] = null;
 		localStorage.removeItem('persist:root')
 		dispatch(logOutReducer)
+		window.location.reload();
 	}
     return (
         <div className="col-12 col-md-12 col-lg-4 col-xl-4 text-center miliods">

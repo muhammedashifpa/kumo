@@ -60,8 +60,8 @@ function AdminUserDetailEdit() {
             dispatch(
                 setSnackbar(
                     true,
-                    "success",
-                    "Saved!"
+                    "error",
+                    "Something Wrong!"
                     )
               )
         })

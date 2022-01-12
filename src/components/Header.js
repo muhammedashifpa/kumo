@@ -110,7 +110,6 @@ function Header(props) {
                                 </ul>
                             </li>
                             
-                            <li><a href="docs.html"  onClick={(e)=>e.preventDefault()}>Docs</a></li>
                             
                         </ul>
                         

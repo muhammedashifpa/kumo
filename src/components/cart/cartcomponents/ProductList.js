@@ -10,10 +10,10 @@ function ProductList() {
 	const products = useSelector((state)=>state.cart)
 	if (products.items.length === 0 || !products) {
 		return(
-			<section className="middle">
-				<div className="container">
-				<div className="row">
-						<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+			// <section className="middle">
+			// 	<div className="container">
+			// 	<div className="row">
+						<div className="col-12 col-lg-7 col-md-12">
 							<div className="text-center d-block mb-5">
 								<h2>Your Cart is empty</h2>
 							</div>
@@ -21,9 +21,9 @@ function ProductList() {
 								<a class="btn stretched-link borders full-width" href="/category"><i class="fas fa-plus mr-2"></i>Explore</a>
 							</div>
 						</div>
-					</div>
-				</div>
-			</section>
+			// 		</div>
+			// 	</div>
+			// </section>
 		)
 	}	
     return (

@@ -40,21 +40,21 @@ function AdminUserDetail() {
         <section className="middle">
         <div className="container">
             <div className="row justify-content-center">
-            <div className="col-12 col-md-12 col-lg-8 col-xl-8">
-            <div className="ord_list_head  d-flex align-items-center justify-content-between mb-4 px-3 py-3">
-							<div className="olh_flex">
-								<p className="m-0 p-0"><span className="text-muted">User Id:</span></p>
-								<h6 className="mb-0 ft-medium">{data.values.id}</h6>
-							</div>	
-							<div className="olh_flex">
+                <div className="col-12 col-md-12 col-lg-8 col-xl-8">
+                    <div className="ord_list_head  d-flex align-items-center justify-content-between mb-4 px-3 py-3">
+						<div className="olh_flex">
+							<p className="m-0 p-0"><span className="text-muted">User Id:</span></p>
+							<h6 className="mb-0 ft-medium">{data.values.id}</h6>
+						</div>	
+                        <div className="olh_flex">
                             <button type="button" class="btn btn-danger mr-3">Block</button>
-                            <Link to='edit' class="btn btn-outline-warning">Edit</Link>
-							</div>	
-						</div>
-						</div>
+                                <Link to='edit' class="btn btn-outline-warning">Edit</Link>
+                        </div>	
+					</div>
+				</div>
             <div className="col-12 col-md-12 col-lg-8 col-xl-8">
                     <form className="row m-0">
-                        <div className="col-xl-6 col-lg-6 col-md-8 col-sm-8">
+                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div className="form-group">
                                 <label className="small text-dark ft-medium">First Name *</label>
                                 <input type="text" disabled className="form-control" name='first_name' value={data.values.first_name}/>

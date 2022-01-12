@@ -14,6 +14,7 @@ function CheckOutSideBar() {
   }
   useEffect(() => {
     axiosInstance.get('/cart/checkout-cart/').then((res) => {
+      console.log(res.data)
       setData(res.data)
     }).catch((err)=>{
       console.log(err)

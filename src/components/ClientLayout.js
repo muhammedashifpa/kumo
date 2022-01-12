@@ -12,7 +12,7 @@ function ClientLayout() {
             <ScrollToTop/>
             <Header/>
                 <Outlet/>
-            <Snackbar/>
+            {/* <Snackbar/> */}
             <Footer/>
             <Modals/>
             
