@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http:///kumo-backend-api.herokuapp.com/';
+const baseURL = 'https:///kumo-backend-api.herokuapp.com/';
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,
