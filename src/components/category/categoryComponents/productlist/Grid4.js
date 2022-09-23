@@ -48,12 +48,6 @@ function Grid4(props) {
 						)})}
 						
 					</div>
-					<div className="row">
-						<div className="col-xl-12 col-lg-12 col-md-12 text-center">
-							<a href="#" className="btn stretched-link borders m-auto"><i className="lni lni-reload mr-2"></i>Load More</a>
-						</div>
-					</div>
-					
 				</div>
 			</section>
     )

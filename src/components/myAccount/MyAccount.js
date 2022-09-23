@@ -10,7 +10,6 @@ function MyAccount(props) {
     const user = useSelector((state)=>state.user)
     return user.auth ? (
         <div>
-            <BreadCrumb />
             <section className="middle">
 				<div className="container">
 					<div className="row justify-content-center justify-content-between">

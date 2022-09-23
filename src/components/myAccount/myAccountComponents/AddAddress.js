@@ -165,18 +165,12 @@ function AddAddress() {
 									
 									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 										<div className="form-group">
-											<label className="text-dark">Mobile Number *</label>
+											<label className="text-dark">Mobile Number *(Include country code eg: '+91')</label>
 											{errorData.mobile === undefined ? null : <span className="error_message">{errorData.mobile}</span>}
 											<input onChange={handleChange} name='mobile' value={formData.mobile} type="text" className={"form-control" + (errorData.mobile === undefined ? "" : " error_form")} placeholder="Mobile Number"/>
 										</div>
 									</div>
-									
-									{/* <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-										<div className="form-group">
-											<input id="delivery" className="checkbox-custom" name="delivery" type="checkbox"/>
-											<label htmlFor="delivery" className="checkbox-custom-label">Set Default delivery address</label>
-										</div>
-									</div> */}
+
 									
 									<div className="col-lg-12 col-md-12 col-sm-12">
 										<div className="form-group text-center">
