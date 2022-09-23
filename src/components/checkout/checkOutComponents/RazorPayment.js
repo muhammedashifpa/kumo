@@ -56,7 +56,7 @@ function RazorPayment(props) {
 
 
     var options = {
-      key_id: 'rzp_test_VwlJUePWbDYM1O',
+      key_id: `** your razorpay key id **`,
       key_secret: `** your razorpay secret key id **`,
       amount: data.data.payment.amount,
       currency: "INR",
