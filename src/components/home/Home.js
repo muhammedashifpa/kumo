@@ -19,7 +19,7 @@ function Home() {
             {/* <ProductsLists /> */}
             {/* <CustomerReview /> */}
             {/* <HomeBlog /> */}
-            <HomeInstagram />
+            {/* <HomeInstagram /> */}
         </div>
     )
 }

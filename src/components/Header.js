@@ -89,27 +89,7 @@ function Header(props) {
                                     <li><Link to="">Kids</Link></li>
                                 </ul>
                             </li>
-                            
-                            <li><a href="" onClick={(e)=>e.preventDefault()}>Product</a>
-                                <ul className="nav-dropdown nav-submenu">
-                                    <li><a href="shop-single-v1.html">Product Detail v01</a></li>
-                                    <li><a href="shop-single-v2.html">Product Detail v02</a></li>
-                                    <li><a href="shop-single-v3.html">Product Detail v03</a></li>
-                                    <li><a href="shop-single-v4.html">Product Detail v04</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li><a href="" onClick={(e)=>e.preventDefault()}>Pages</a>
-                                <ul className="nav-dropdown nav-submenu">
-                                    <li><Link to="/product">ProductDetail</Link></li>
-                                    <li><Link to="/cart">Cart</Link></li>
-                                    <li><Link to="/favourite">fav</Link></li>
-                                    <li><Link to="/checkout">Checkout</Link></li>
-                                    <li><Link to="/order-complete">Order-complete</Link></li>
-                                    <li><Link to="/my-account/my-profile">MyAccount</Link></li>
-                                </ul>
-                            </li>
-                            
+               
                             
                         </ul>
                         
@@ -153,16 +133,6 @@ function Header(props) {
                             }
 
                             </li>
-                            {/* <li>
-                                <a href="#" onClick={openWishlist}>
-                                    <i className="lni lni-heart"></i><span className="dn-counter">2</span>
-                                </a>
-                            </li> */}
-                            {/* <li>
-                                <a href="#" onClick={openCart}>
-                                    <i className="lni lni-shopping-basket"></i><span className="dn-counter">3</span>
-                                </a>
-                            </li> */}
                         </ul>
                     </div>
                 </nav>

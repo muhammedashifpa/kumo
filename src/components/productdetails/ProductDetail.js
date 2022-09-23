@@ -18,13 +18,10 @@ function ProductDetail() {
     
     return (
         <div>
-            <BreadCrumb/>
             {!data.product||data.product.length==0?null:
                 <FullView data={data.product}/> 
             }
-            <Review/>
-            {/* <SimilarProduct/> */}
-            {/* <FullView_copy/> */}
+            {/* <Review/> */}
         </div>
     )
 }

@@ -22,7 +22,7 @@ function ProfileDashbord(props) {
 							<div className="d-block border rounded mfliud-bot">
 								<div className="dashboard_author px-2 py-5">
 									<div className="dash_auth_thumb circle p-1 border d-inline-flex mx-auto mb-2">
-										<img src="assets/img/team-1.jpg" className="img-fluid circle" width="100" alt="" />
+										<div src='' className="img-fluid circle" width="100" height='100' alt="" />
 									</div>
 									<div className="dash_caption">
 										<h4 className="fs-md ft-medium mb-0 lh-1">{user.username}</h4>

@@ -315,37 +315,7 @@ function FullView(props) {
 								<div className="prt_03 mb-4">
 									<p>{data.description}</p>
 								</div>
-								
-								<div className="prt_04 mb-2">
-									<p className="d-flex align-items-center mb-0 text-dark ft-medium">Color:</p>
-									<div className="text-left">
-										<div className="form-check form-option form-check-inline mb-1">
-											<input className="form-check-input" type="radio" name="color8" id="white8"/>
-											<label className="form-option-label rounded-circle" htmlFor="white8"><span className="form-option-color rounded-circle blc7"></span></label>
-										</div>
-										<div className="form-check form-option form-check-inline mb-1">
-											<input className="form-check-input" type="radio" name="color8" id="blue8"/>
-											<label className="form-option-label rounded-circle" htmlFor="blue8"><span className="form-option-color rounded-circle blc2"></span></label>
-										</div>
-										<div className="form-check form-option form-check-inline mb-1">
-											<input className="form-check-input" type="radio" name="color8" id="yellow8"/>
-											<label className="form-option-label rounded-circle" htmlFor="yellow8"><span className="form-option-color rounded-circle blc5"></span></label>
-										</div>
-										<div className="form-check form-option form-check-inline mb-1">
-											<input className="form-check-input" type="radio" name="color8" id="pink8"/>
-											<label className="form-option-label rounded-circle" htmlFor="pink8"><span className="form-option-color rounded-circle blc3"></span></label>
-										</div>
-										<div className="form-check form-option form-check-inline mb-1">
-											<input className="form-check-input" type="radio" name="color8" id="red"/>
-											<label className="form-option-label rounded-circle" htmlFor="red"><span className="form-option-color rounded-circle blc4"></span></label>
-										</div>
-										<div className="form-check form-option form-check-inline mb-1">
-											<input className="form-check-input" type="radio" name="color8" id="green"/>
-											<label className="form-option-label rounded-circle" htmlFor="green"><span className="form-option-color rounded-circle blc6"></span></label>
-										</div>
-									</div>
-								</div>
-								
+
 								<div className="prt_04 mb-4">
 									<p className="d-flex align-items-center mb-0 text-dark ft-medium">Size:</p>
 									<div className="text-left pb-0 pt-2">
