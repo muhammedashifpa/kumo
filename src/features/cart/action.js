@@ -53,7 +53,7 @@ export const addCart = (p_id,u_id,size,count) =>{
                 setSnackbar(
                   true,
                   "error",
-                  "Sorry, somthing wrong"
+                  "Sorry, somthing wrong, try After login"
                 )
               )
         }
